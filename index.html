@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Developer</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Archivo + Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Archivo', 'sans-serif'],
+            body: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            bg: {
+              base: '#080810',
+              card: '#0f0f1a',
+              elevated: '#16162a',
+            },
+            accent: {
+              cyan:   '#22d3ee',
+              violet: '#a78bfa',
+              green:  '#4ade80',
+              rose:   '#f472b6',
+            },
+            surface: 'rgba(255,255,255,0.04)',
+          },
+          animation: {
+            'aurora':      'aurora 18s ease infinite',
+            'float':       'float 6s ease-in-out infinite',
+            'fade-up':     'fadeUp 0.6s ease forwards',
+            'glow-pulse':  'glowPulse 3s ease-in-out infinite',
+            'spin-slow':   'spin 20s linear infinite',
+          },
+          keyframes: {
+            aurora: {
+              '0%,100%': { backgroundPosition: '0% 50%' },
+              '50%':     { backgroundPosition: '100% 50%' },
+            },
+            float: {
+              '0%,100%': { transform: 'translateY(0px)' },
+              '50%':     { transform: 'translateY(-18px)' },
+            },
+            fadeUp: {
+              from: { opacity: '0', transform: 'translateY(28px)' },
+              to:   { opacity: '1', transform: 'translateY(0)' },
+            },
+            glowPulse: {
+              '0%,100%': { opacity: '0.5' },
+              '50%':     { opacity: '1' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: #080810;
+      color: #e2e8f0;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Aurora hero gradient ── */
+    .aurora-bg {
+      background: linear-gradient(
+        -45deg,
+        #080810,
+        #0d0d20,
+        #0a1628,
+        #0f0a20,
+        #130d28,
+        #080d1a
+      );
+      background-size: 400% 400%;
+      animation: aurora 18s ease infinite;
+    }
+
+    /* ── Aurora orb blobs ── */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+    .orb-cyan   { background: radial-gradient(circle, rgba(34,211,238,0.22) 0%, transparent 70%); }
+    .orb-violet { background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%); }
+    .orb-green  { background: radial-gradient(circle, rgba(74,222,128,0.14) 0%, transparent 70%); }
+
+    /* ── Glass card ── */
+    .glass {
+      background: rgba(255,255,255,0.035);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* ── Nav floating ── */
+    .nav-glass {
+      background: rgba(8,8,16,0.75);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Gradient text ── */
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #22d3ee 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-gradient-violet {
+      background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Neon border on hover ── */
+    .card-hover {
+      transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+    }
+    .card-hover:hover {
+      border-color: rgba(34,211,238,0.35);
+      box-shadow: 0 0 0 1px rgba(34,211,238,0.1), 0 12px 40px rgba(34,211,238,0.08), 0 4px 16px rgba(0,0,0,0.5);
+      transform: translateY(-3px);
+    }
+
+    /* ── Glowing button ── */
+    .btn-primary {
+      background: linear-gradient(135deg, #22d3ee, #a78bfa);
+      color: #080810;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: opacity 200ms ease, box-shadow 200ms ease, transform 150ms ease;
+    }
+    .btn-primary:hover {
+      opacity: 0.92;
+      box-shadow: 0 0 24px rgba(34,211,238,0.35), 0 0 48px rgba(167,139,250,0.2);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e2e8f0;
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+    .btn-outline:hover {
+      border-color: rgba(34,211,238,0.5);
+      background: rgba(34,211,238,0.06);
+    }
+
+    /* ── Skill tag ── */
+    .skill-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+    }
+    .skill-tag:hover {
+      background: rgba(34,211,238,0.1);
+      border-color: rgba(34,211,238,0.3);
+      color: #22d3ee;
+    }
+
+    /* ── Timeline line ── */
+    .timeline-line {
+      background: linear-gradient(to bottom, #22d3ee, #a78bfa, rgba(167,139,250,0));
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Link underline glow ── */
+    .link-glow {
+      position: relative;
+      color: #22d3ee;
+      text-decoration: none;
+    }
+    .link-glow::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 1px;
+      background: #22d3ee;
+      box-shadow: 0 0 6px #22d3ee;
+      transition: width 250ms ease;
+    }
+    .link-glow:hover::after { width: 100%; }
+
+    /* ── Project image overlay ── */
+    .proj-overlay {
+      background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 60%, transparent 100%);
+    }
+
+    /* ── Cursor dot (desktop) ── */
+    #cursor-dot {
+      position: fixed;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22d3ee;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: opacity 300ms ease;
+      box-shadow: 0 0 10px #22d3ee, 0 0 20px rgba(34,211,238,0.4);
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(34,211,238,0.4);
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%,-50%);
+      transition: transform 120ms ease, width 200ms ease, height 200ms ease, opacity 300ms ease;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #080810; }
+    ::-webkit-scrollbar-thumb { background: rgba(34,211,238,0.3); border-radius: 4px; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .aurora-bg { animation: none; }
+    }
+
+    /* ── Section divider ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(34,211,238,0.2), rgba(167,139,250,0.2), transparent);
+    }
+
+    /* ── Logo glitch ── */
+    .logo-glitch { position: relative; display: inline-block; }
+    .logo-glitch::before,
+    .logo-glitch::after {
+      content: attr(data-glitch);
+      position: absolute;
+      top: 0; left: 0;
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: inherit;
+      letter-spacing: inherit;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .logo-glitch:hover::before {
+      opacity: 1;
+      animation: glitch-a 0.45s steps(1) forwards;
+      color: #22d3ee;
+      clip-path: polygon(0 10%, 100% 10%, 100% 42%, 0 42%);
+    }
+    .logo-glitch:hover::after {
+      opacity: 1;
+      animation: glitch-b 0.45s steps(1) forwards;
+      color: #a78bfa;
+      clip-path: polygon(0 58%, 100% 58%, 100% 88%, 0 88%);
+    }
+    @keyframes glitch-a {
+      0%  { transform: translate(-3px, 0); opacity: 1; }
+      25% { transform: translate( 3px, 0); }
+      50% { transform: translate(-2px, 0); }
+      75% { transform: translate( 2px, 0); }
+      100%{ transform: translate( 0,   0); opacity: 0; }
+    }
+    @keyframes glitch-b {
+      0%  { transform: translate( 3px, 0); opacity: 1; }
+      25% { transform: translate(-3px, 0); }
+      50% { transform: translate( 2px, 0); }
+      75% { transform: translate(-2px, 0); }
+      100%{ transform: translate( 0,   0); opacity: 0; }
+    }
+
+    /* ── Particles canvas ── */
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* ── Card tilt ── */
+    [data-tilt] {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .tilt-shine {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 10;
+      transition: background 0.1s ease;
+    }
+
+    /* ── Magnetic button ── */
+    [data-magnetic] { will-change: transform; }
+
+    /* ── Scramble text ── */
+    .scramble-text { display: block; }
+
+    /* ── Skill tag stagger ── */
+    .skill-tag {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease, background 200ms ease, border-color 200ms ease, color 200ms ease;
+    }
+    .skill-tag.tag-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="font-body">
+
+  <!-- ── Custom cursor (desktop only) ── -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#home" class="font-heading font-black text-xl tracking-tight logo-glitch" data-glitch="dev.">
+        <span class="text-gradient-cyan">dev</span><span class="text-white/80">.</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+        <li><a href="#about"    class="hover:text-white transition-colors duration-200 cursor-pointer">About</a></li>
+        <li><a href="#projects" class="hover:text-white transition-colors duration-200 cursor-pointer">Projects</a></li>
+        <li><a href="#skills"   class="hover:text-white transition-colors duration-200 cursor-pointer">Skills</a></li>
+        <li><a href="#contact"  class="hover:text-white transition-colors duration-200 cursor-pointer">Contact</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm cursor-pointer" data-magnetic>
+        Hire me
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Mobile menu toggle -->
+      <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer" aria-label="Toggle menu" aria-expanded="false">
+        <svg id="icon-open" class="w-5 h-5 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <svg id="icon-close" class="w-5 h-5 text-slate-300 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 flex flex-col gap-4 text-sm font-medium text-slate-300">
+      <a href="#about"    class="hover:text-white transition-colors cursor-pointer py-1">About</a>
+      <a href="#projects" class="hover:text-white transition-colors cursor-pointer py-1">Projects</a>
+      <a href="#skills"   class="hover:text-white transition-colors cursor-pointer py-1">Skills</a>
+      <a href="#contact"  class="hover:text-white transition-colors cursor-pointer py-1">Contact</a>
+      <a href="#contact"  class="btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm mt-1 cursor-pointer">Hire me</a>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section id="home" class="aurora-bg relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+
+    <!-- Orb blobs -->
+    <div class="orb orb-cyan  w-[700px] h-[700px] -top-40 -left-40 animate-spin-slow" style="animation-direction:reverse"></div>
+    <div class="orb orb-violet w-[600px] h-[600px] -bottom-32 -right-32 animate-spin-slow"></div>
+    <div class="orb orb-green  w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+    <!-- Particles canvas -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
+      <!-- Status badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium text-slate-300 mb-10 animate-fade-up">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-green opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-green"></span>
+        </span>
+        Available for freelance &amp; full-time roles
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-heading font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none tracking-tight mb-6 animate-fade-up" style="animation-delay:0.1s">
+        <span class="text-white scramble-text" data-final="Crafting">Crafting</span>
+        <span class="text-gradient-cyan scramble-text" data-final="Digital">Digital</span>
+        <span class="text-white scramble-text" data-final="Experiences">Experiences</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="text-slate-400 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed animate-fade-up" style="animation-delay:0.2s">
+        Full-stack developer blending clean architecture with beautiful interfaces. I turn complex problems into elegant solutions.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay:0.3s">
+        <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm cursor-pointer" data-magnetic>
+          View My Work
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm cursor-pointer" data-magnetic>
+          Let's Talk
+        </a>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 text-xs animate-float">
+        <span class="tracking-widest uppercase">Scroll</span>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════ -->
+  <section id="about" class="py-32 max-w-6xl mx-auto px-6">
+    <div class="reveal grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: image + floating cards -->
+      <div class="relative">
+        <!-- Avatar placeholder -->
+        <div class="relative w-72 h-72 mx-auto lg:mx-0">
+          <div class="w-full h-full rounded-3xl glass border border-white/10 overflow-hidden flex items-center justify-center">
+            <!-- Abstract avatar pattern -->
+            <svg viewBox="0 0 200 200" class="w-full h-full" aria-label="Developer avatar">
+              <defs>
+                <linearGradient id="av1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.4"/>
+                </linearGradient>
+                <linearGradient id="av2" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#4ade80" stop-opacity="0.2"/>
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" fill="#0f0f1a"/>
+              <circle cx="100" cy="75" r="40" fill="url(#av1)"/>
+              <ellipse cx="100" cy="170" rx="60" ry="40" fill="url(#av2)"/>
+              <circle cx="100" cy="75" r="28" fill="rgba(34,211,238,0.15)" stroke="rgba(34,211,238,0.3)" stroke-width="1"/>
+              <circle cx="100" cy="75" r="16" fill="rgba(167,139,250,0.3)"/>
+            </svg>
+          </div>
+          <!-- Glow ring -->
+          <div class="absolute -inset-4 rounded-3xl border border-accent-cyan/10 -z-10"></div>
+          <div class="absolute -inset-8 rounded-3xl border border-accent-violet/5 -z-10"></div>
+        </div>
+
+        <!-- Floating stat cards -->
+        <div class="glass card-hover absolute -bottom-6 -right-4 lg:-right-8 px-5 py-3 rounded-2xl text-center min-w-[110px]">
+          <div class="font-heading font-black text-2xl text-gradient-cyan counter" data-count="3" data-suffix="+">3+</div>
+          <div class="text-xs text-slate-500 mt-0.5">Years Exp.</div>
+        </div>
+        <div class="glass card-hover absolute -top-4 -right-4 lg:-right-8 px-5 py-3 rounded-2xl text-center min-w-[110px]">
+          <div class="font-heading font-black text-2xl text-gradient-violet counter" data-count="40" data-suffix="+">40+</div>
+          <div class="text-xs text-slate-500 mt-0.5">Projects</div>
+        </div>
+      </div>
+
+      <!-- Right: copy -->
+      <div>
+        <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-4">About Me</p>
+        <h2 class="font-heading font-black text-4xl md:text-5xl leading-tight text-white mb-6">
+          I build things that live on the internet
+        </h2>
+        <p class="text-slate-400 text-base leading-relaxed mb-5">
+          I'm a full-stack developer with a passion for creating performant, accessible, and visually compelling web applications. From zero to production, I own the entire lifecycle.
+        </p>
+        <p class="text-slate-400 text-base leading-relaxed mb-8">
+          When I'm not pushing code I'm exploring new design systems, contributing to open-source, or obsessing over typography.
+        </p>
+
+        <!-- Quick facts -->
+        <ul class="space-y-3 text-sm mb-8">
+          <li class="flex items-center gap-3 text-slate-300">
+            <svg class="w-4 h-4 text-accent-cyan flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Based in <span class="text-white ml-1">San Francisco, CA</span>
+          </li>
+          <li class="flex items-center gap-3 text-slate-300">
+            <svg class="w-4 h-4 text-accent-violet flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Currently at <span class="text-white ml-1">Open to opportunities</span>
+          </li>
+          <li class="flex items-center gap-3 text-slate-300">
+            <svg class="w-4 h-4 text-accent-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Reach me at <a href="mailto:hello@dev.io" class="link-glow ml-1">hello@dev.io</a>
+          </li>
+        </ul>
+
+        <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold cursor-pointer">
+          See my projects
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+
+  <!-- ══════════════════════════════════════
+       PROJECTS
+  ══════════════════════════════════════ -->
+  <section id="projects" class="py-32 max-w-6xl mx-auto px-6">
+    <!-- Header -->
+    <div class="reveal text-center mb-16">
+      <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-4">My Work</p>
+      <h2 class="font-heading font-black text-4xl md:text-5xl text-white leading-tight">Selected Projects</h2>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Project 1 — featured (spans 2 cols) -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden lg:col-span-2 group cursor-pointer" data-tilt>
+        <div class="tilt-shine"></div>
+        <!-- Banner -->
+        <div class="relative h-56 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-cyan/20 via-transparent to-accent-violet/20"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <!-- Abstract project art -->
+            <svg viewBox="0 0 600 280" class="w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="600" height="280" fill="#0a0a18"/>
+              <defs>
+                <linearGradient id="p1g" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.3"/>
+                </linearGradient>
+              </defs>
+              <!-- Browser chrome mockup -->
+              <rect x="40" y="30" width="520" height="220" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <rect x="40" y="30" width="520" height="36" rx="12" fill="rgba(255,255,255,0.05)"/>
+              <circle cx="68" cy="48" r="6" fill="rgba(244,114,182,0.6)"/>
+              <circle cx="88" cy="48" r="6" fill="rgba(251,191,36,0.6)"/>
+              <circle cx="108" cy="48" r="6" fill="rgba(74,222,128,0.6)"/>
+              <rect x="130" y="39" width="260" height="18" rx="9" fill="rgba(255,255,255,0.05)"/>
+              <!-- Content lines -->
+              <rect x="60" y="90" width="200" height="14" rx="4" fill="url(#p1g)"/>
+              <rect x="60" y="114" width="300" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
+              <rect x="60" y="130" width="260" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
+              <rect x="60" y="146" width="200" height="8" rx="4" fill="rgba(255,255,255,0.04)"/>
+              <!-- Card elements right -->
+              <rect x="330" y="88" width="200" height="120" rx="10" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.15)" stroke-width="1"/>
+              <rect x="346" y="106" width="100" height="10" rx="3" fill="rgba(34,211,238,0.4)"/>
+              <rect x="346" y="124" width="140" height="7" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="346" y="138" width="120" height="7" rx="3" fill="rgba(255,255,255,0.07)"/>
+              <rect x="346" y="172" width="60" height="22" rx="6" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
+            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
+            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-start justify-between mb-3">
+            <span class="text-xs font-semibold text-accent-cyan bg-accent-cyan/10 px-3 py-1 rounded-full border border-accent-cyan/20">Featured</span>
+            <div class="flex items-center gap-1 text-slate-600">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </div>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">SaaS Analytics Dashboard</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Real-time analytics platform handling 10M+ events/day with custom charting, cohort analysis, and automated alerting.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">React</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">TypeScript</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">PostgreSQL</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Redis</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group cursor-pointer" data-tilt>
+        <div class="tilt-shine"></div>
+        <div class="relative h-48 overflow-hidden">
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.2) 0%, transparent 70%)"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-6">
+            <svg viewBox="0 0 240 180" class="w-full h-auto" aria-hidden="true">
+              <rect width="240" height="180" fill="#100f20"/>
+              <defs>
+                <linearGradient id="p2g" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#a78bfa"/>
+                  <stop offset="100%" stop-color="#f472b6"/>
+                </linearGradient>
+              </defs>
+              <circle cx="120" cy="90" r="55" fill="none" stroke="url(#p2g)" stroke-width="1" opacity="0.3"/>
+              <circle cx="120" cy="90" r="38" fill="none" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+              <circle cx="120" cy="90" r="18" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
+              <!-- Orbit nodes -->
+              <circle cx="175" cy="90" r="7" fill="rgba(244,114,182,0.6)"/>
+              <circle cx="65"  cy="90" r="7" fill="rgba(167,139,250,0.6)"/>
+              <circle cx="120" cy="35" r="7" fill="rgba(34,211,238,0.6)"/>
+              <circle cx="120" cy="145" r="7" fill="rgba(74,222,128,0.6)"/>
+              <text x="120" y="95" text-anchor="middle" fill="rgba(167,139,250,0.9)" font-size="14" font-family="monospace">API</text>
+            </svg>
+          </div>
+          <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
+            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
+            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-heading font-bold text-lg text-white mb-2">REST API Gateway</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">High-throughput API gateway with auth, rate limiting, and request transformation at the edge.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Node.js</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Fastify</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Docker</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group cursor-pointer" data-tilt>
+        <div class="tilt-shine"></div>
+        <div class="relative h-48 overflow-hidden">
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.15) 0%, transparent 70%)"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-6">
+            <svg viewBox="0 0 240 180" class="w-full h-auto" aria-hidden="true">
+              <rect width="240" height="180" fill="#080f10"/>
+              <!-- Code editor aesthetic -->
+              <rect x="20" y="20" width="200" height="140" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <rect x="20" y="20" width="200" height="28" rx="8" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="38" cy="34" r="5" fill="rgba(244,114,182,0.5)"/>
+              <circle cx="54" cy="34" r="5" fill="rgba(251,191,36,0.5)"/>
+              <circle cx="70" cy="34" r="5" fill="rgba(74,222,128,0.5)"/>
+              <!-- Code lines -->
+              <rect x="36" y="60" width="30" height="7" rx="2" fill="rgba(167,139,250,0.6)"/>
+              <rect x="72" y="60" width="50" height="7" rx="2" fill="rgba(34,211,238,0.5)"/>
+              <rect x="36" y="76" width="20" height="7" rx="2" fill="rgba(74,222,128,0.6)"/>
+              <rect x="62" y="76" width="80" height="7" rx="2" fill="rgba(255,255,255,0.15)"/>
+              <rect x="36" y="92" width="15" height="7" rx="2" fill="rgba(244,114,182,0.5)"/>
+              <rect x="57" y="92" width="60" height="7" rx="2" fill="rgba(255,255,255,0.1)"/>
+              <rect x="36" y="108" width="30" height="7" rx="2" fill="rgba(167,139,250,0.6)"/>
+              <rect x="72" y="108" width="40" height="7" rx="2" fill="rgba(34,211,238,0.4)"/>
+              <rect x="36" y="124" width="100" height="7" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="36" y="140" width="15" height="7" rx="2" fill="rgba(74,222,128,0.6)"/>
+            </svg>
+          </div>
+          <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
+            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
+            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Dev Environment CLI</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Automated local dev setup tool with templates, env management, and one-command spin-up.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Go</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Shell</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">YAML</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group cursor-pointer" data-tilt>
+        <div class="tilt-shine"></div>
+        <div class="relative h-48 overflow-hidden">
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(34,211,238,0.15) 0%, transparent 70%)"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-6">
+            <svg viewBox="0 0 240 180" class="w-full h-auto" aria-hidden="true">
+              <rect width="240" height="180" fill="#080810"/>
+              <!-- Mobile frame -->
+              <rect x="85" y="10" width="70" height="160" rx="14" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+              <rect x="95" y="22" width="50" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
+              <rect x="113" y="24" width="14" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+              <!-- App content -->
+              <rect x="92" y="40" width="56" height="8" rx="3" fill="rgba(34,211,238,0.5)"/>
+              <rect x="92" y="56" width="56" height="30" rx="6" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.15)" stroke-width="1"/>
+              <rect x="98" y="62" width="30" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+              <rect x="98" y="72" width="20" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+              <rect x="92" y="94" width="56" height="30" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
+              <rect x="98" y="100" width="35" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+              <rect x="98" y="110" width="25" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+              <rect x="92" y="132" width="56" height="22" rx="8" fill="rgba(34,211,238,0.15)" stroke="rgba(34,211,238,0.3)" stroke-width="1"/>
+              <rect x="107" y="140" width="26" height="6" rx="2" fill="rgba(34,211,238,0.7)"/>
+            </svg>
+          </div>
+          <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
+            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
+            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Mobile Finance App</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Cross-platform finance tracker with biometric auth, budget forecasting, and AI insights.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">React Native</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Expo</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Supabase</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /grid -->
+  </section>
+
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+
+  <!-- ══════════════════════════════════════
+       SKILLS
+  ══════════════════════════════════════ -->
+  <section id="skills" class="py-32 max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <p class="text-accent-violet text-sm font-semibold tracking-widest uppercase mb-4">Expertise</p>
+      <h2 class="font-heading font-black text-4xl md:text-5xl text-white leading-tight">Skills &amp; Stack</h2>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Frontend -->
+      <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-accent-cyan/10 border border-accent-cyan/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-white mb-3">Frontend</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">React</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Next.js</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">TypeScript</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Tailwind</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Framer</span>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-accent-violet/10 border border-accent-violet/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-white mb-3">Backend</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Node.js</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Go</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Python</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">GraphQL</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">REST</span>
+        </div>
+      </div>
+
+      <!-- Data -->
+      <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-accent-green/10 border border-accent-green/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-white mb-3">Data &amp; DB</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">PostgreSQL</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">MongoDB</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Redis</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Prisma</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Drizzle</span>
+        </div>
+      </div>
+
+      <!-- DevOps -->
+      <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
+        <div class="w-10 h-10 rounded-xl bg-accent-rose/10 border border-accent-rose/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-rose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-white mb-3">DevOps</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Docker</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">AWS</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">CI/CD</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Terraform</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">K8s</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+
+  <!-- ══════════════════════════════════════
+       CONTACT
+  ══════════════════════════════════════ -->
+  <section id="contact" class="py-32">
+    <!-- Aurora blob behind contact -->
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] orb orb-cyan opacity-20 -z-0"></div>
+
+      <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+        <div class="reveal">
+          <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-4">Get In Touch</p>
+          <h2 class="font-heading font-black text-4xl md:text-5xl text-white leading-tight mb-6">
+            Let's build something<br/>
+            <span class="text-gradient-cyan">amazing together</span>
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed mb-12">
+            I'm currently open to new opportunities. Whether you have a project in mind, want to collaborate, or just want to say hi — my inbox is always open.
+          </p>
+        </div>
+
+        <!-- Contact card -->
+        <div class="reveal glass border border-white/[0.07] rounded-3xl p-8 mb-8">
+          <form class="space-y-4" onsubmit="return false">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="text-left">
+                <label for="name" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Name</label>
+                <input id="name" type="text" placeholder="Jane Doe"
+                  class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-accent-cyan/40 focus:ring-1 focus:ring-accent-cyan/20 transition-all duration-200" />
+              </div>
+              <div class="text-left">
+                <label for="email" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Email</label>
+                <input id="email" type="email" placeholder="jane@example.com"
+                  class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-accent-cyan/40 focus:ring-1 focus:ring-accent-cyan/20 transition-all duration-200" />
+              </div>
+            </div>
+            <div class="text-left">
+              <label for="message" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Message</label>
+              <textarea id="message" rows="4" placeholder="Tell me about your project..."
+                class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-accent-cyan/40 focus:ring-1 focus:ring-accent-cyan/20 transition-all duration-200 resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm cursor-pointer flex items-center justify-center gap-2">
+              Send Message
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Social links -->
+        <div class="reveal flex items-center justify-center gap-4">
+          <!-- GitHub -->
+          <a href="#" onclick="return false" aria-label="GitHub" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" onclick="return false" aria-label="LinkedIn" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" onclick="return false" aria-label="Twitter" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Email -->
+          <a href="mailto:hello@dev.io" aria-label="Email" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="border-t border-white/[0.05] py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
+      <div class="font-heading font-black">
+        <span class="text-gradient-cyan">dev</span><span class="text-slate-600">.</span>
+      </div>
+      <p>&copy; 2026 — Designed &amp; built with precision</p>
+      <a href="#home" class="hover:text-slate-400 transition-colors cursor-pointer flex items-center gap-1.5">
+        Back to top
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </a>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+       JS
+  ══════════════════════════════════════ -->
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+
+    // ── Custom cursor
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = -100, my = -100, rx = -100, ry = -100;
+
+    if (!isTouchDevice()) {
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx + 'px';
+        dot.style.top  = my + 'px';
+      });
+      setInterval(() => {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+      }, 16);
+      document.querySelectorAll('a, button, [class*="card-hover"]').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          ring.style.width  = '52px';
+          ring.style.height = '52px';
+          ring.style.borderColor = 'rgba(34,211,238,0.6)';
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.style.width  = '32px';
+          ring.style.height = '32px';
+          ring.style.borderColor = 'rgba(34,211,238,0.4)';
+        });
+      });
+    } else {
+      dot.style.display  = 'none';
+      ring.style.display = 'none';
+    }
+
+    // ── Particles canvas
+    (function initParticles() {
+      if (prefersReducedMotion) return;
+      const canvas = document.getElementById('particles-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const COUNT = 55;
+      let W, H, particles = [];
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function Particle() {
+        this.x  = Math.random() * W;
+        this.y  = Math.random() * H;
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.r  = Math.random() * 1.2 + 0.4;
+        this.a  = Math.random() * 0.35 + 0.08;
+      }
+      Particle.prototype.update = function() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > W) this.vx *= -1;
+        if (this.y < 0 || this.y > H) this.vy *= -1;
+      };
+      Particle.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,' + this.a + ')';
+        ctx.fill();
+      };
+
+      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const d  = Math.sqrt(dx * dx + dy * dy);
+            if (d < 110) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(34,211,238,' + ((1 - d / 110) * 0.07) + ')';
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    // ── Text scramble
+    (function initScramble() {
+      if (prefersReducedMotion) return;
+      const CHARS = '!<>-_/[]{}=+*?#@0123456789ABCDEFabcdef';
+      function scramble(el, delay) {
+        const final = el.dataset.final || el.textContent;
+        const len = final.length;
+        let frame = 0;
+        const totalFrames = 38;
+        setTimeout(() => {
+          const id = setInterval(() => {
+            el.textContent = Array.from({length: len}, (_, i) => {
+              if (frame / totalFrames > i / len) return final[i];
+              return CHARS[Math.floor(Math.random() * CHARS.length)];
+            }).join('');
+            if (++frame > totalFrames) { el.textContent = final; clearInterval(id); }
+          }, 28);
+        }, delay);
+      }
+      document.querySelectorAll('.scramble-text').forEach((el, i) => scramble(el, 400 + i * 220));
+    })();
+
+    // ── Animated counters
+    function runCounter(el) {
+      if (prefersReducedMotion) return;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ── Scroll reveal + counter + tag stagger
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+            // counters
+            entry.target.querySelectorAll('.counter').forEach(runCounter);
+            // stagger skill tags
+            entry.target.querySelectorAll('.skill-tag').forEach((tag, idx) => {
+              setTimeout(() => tag.classList.add('tag-visible'), idx * 55 + 80);
+            });
+          }, i * 80);
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    // make already-visible skill tags show up without observer (hero section etc.)
+    document.querySelectorAll('.skill-tag').forEach(t => {
+      if (!t.closest('.reveal')) t.classList.add('tag-visible');
+    });
+
+    // ── 3D card tilt
+    if (!isTouchDevice() && !prefersReducedMotion) {
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        const shine = card.querySelector('.tilt-shine');
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'transform 0.08s ease';
+        });
+        card.addEventListener('mousemove', e => {
+          const r  = card.getBoundingClientRect();
+          const x  = (e.clientX - r.left) / r.width;
+          const y  = (e.clientY - r.top)  / r.height;
+          const rX = (0.5 - y) * 14;
+          const rY = (x - 0.5) * 14;
+          card.style.transform = `perspective(900px) rotateX(${rX}deg) rotateY(${rY}deg) translateZ(6px)`;
+          if (shine) shine.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, rgba(255,255,255,0.07) 0%, transparent 65%)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transition = 'transform 0.55s cubic-bezier(0.23,1,0.32,1)';
+          card.style.transform  = '';
+          if (shine) shine.style.background = '';
+          setTimeout(() => { card.style.transition = ''; }, 560);
+        });
+      });
+    }
+
+    // ── Magnetic buttons
+    if (!isTouchDevice() && !prefersReducedMotion) {
+      document.querySelectorAll('[data-magnetic]').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          btn.style.transition = 'transform 0.1s ease';
+        });
+        btn.addEventListener('mousemove', e => {
+          const r  = btn.getBoundingClientRect();
+          const dx = (e.clientX - (r.left + r.width  / 2)) * 0.28;
+          const dy = (e.clientY - (r.top  + r.height / 2)) * 0.28;
+          btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transition = 'transform 0.45s cubic-bezier(0.23,1,0.32,1)';
+          btn.style.transform  = '';
+        });
+      });
+    }
+
+    // ── Mobile menu
+    const menuBtn   = document.getElementById('menu-btn');
+    const mobileMenu  = document.getElementById('mobile-menu');
+    const iconOpen  = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    let menuExpanded = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuExpanded = !menuExpanded;
+      mobileMenu.classList.toggle('hidden', !menuExpanded);
+      iconOpen.classList.toggle('hidden', menuExpanded);
+      iconClose.classList.toggle('hidden', !menuExpanded);
+      menuBtn.setAttribute('aria-expanded', menuExpanded);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menuExpanded = false;
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', false);
+      });
+    });
+
+    // ── Active nav link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('text-white',      link.getAttribute('href') === '#' + entry.target.id);
+            link.classList.toggle('text-slate-400',  link.getAttribute('href') !== '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => spy.observe(s));
+  </script>
+</body>
+</html>
