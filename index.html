@@ -3,62 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio of Takrim Nahin</title>
+  <title>Takrim Nahin — Full-Stack AI/ML Engineer</title>
+  <meta name="description" content="Takrim Nahin — CS Senior at UCF building full-stack apps and AI/ML systems. Co-authored quantum neural network research. Open to Fall 2026 internships." />
+  <meta property="og:title" content="Takrim Nahin — Full-Stack AI/ML Engineer" />
+  <meta property="og:description" content="CS Senior at UCF. Full-stack dev, AI/ML, quantum research. Open to Fall 2026 internships." />
+  <meta property="og:type" content="website" />
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Archivo + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            heading: ['Archivo', 'sans-serif'],
-            body: ['Space Grotesk', 'sans-serif'],
+            heading: ['Syne', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
           },
           colors: {
-            bg: {
-              base: '#080810',
-              card: '#0f0f1a',
-              elevated: '#16162a',
-            },
-            accent: {
-              cyan:   '#22d3ee',
-              violet: '#a78bfa',
-              green:  '#4ade80',
-              rose:   '#f472b6',
-            },
-            surface: 'rgba(255,255,255,0.04)',
+            bg: { base: '#05050d', card: '#0c0c1a', elevated: '#111128' },
+            accent: { cyan: '#00e5ff', violet: '#9b7ff7', green: '#3dffa0', amber: '#ffb547' },
           },
           animation: {
-            'aurora':      'aurora 18s ease infinite',
-            'float':       'float 6s ease-in-out infinite',
-            'fade-up':     'fadeUp 0.6s ease forwards',
-            'glow-pulse':  'glowPulse 3s ease-in-out infinite',
-            'spin-slow':   'spin 20s linear infinite',
+            'aurora':     'aurora 22s ease infinite',
+            'float':      'float 7s ease-in-out infinite',
+            'fade-up':    'fadeUp 0.7s ease forwards',
+            'spin-slow':  'spin 28s linear infinite',
+            'blink':      'blink 1.1s step-end infinite',
+            'slide-down': 'slideDown 0.3s ease forwards',
           },
           keyframes: {
-            aurora: {
-              '0%,100%': { backgroundPosition: '0% 50%' },
-              '50%':     { backgroundPosition: '100% 50%' },
-            },
-            float: {
-              '0%,100%': { transform: 'translateY(0px)' },
-              '50%':     { transform: 'translateY(-18px)' },
-            },
-            fadeUp: {
-              from: { opacity: '0', transform: 'translateY(28px)' },
-              to:   { opacity: '1', transform: 'translateY(0)' },
-            },
-            glowPulse: {
-              '0%,100%': { opacity: '0.5' },
-              '50%':     { opacity: '1' },
-            },
+            aurora:    { '0%,100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
+            float:     { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-16px)' } },
+            fadeUp:    { from: { opacity: '0', transform: 'translateY(32px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+            blink:     { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+            slideDown: { from: { opacity: '0', transform: 'translateY(-8px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
           },
         },
       },
@@ -66,347 +48,268 @@
   </script>
 
   <style>
-    :root {
-      color-scheme: dark;
-    }
-
+    :root { color-scheme: dark; }
     * { box-sizing: border-box; }
-
     body {
-      background-color: #080810;
-      color: #e2e8f0;
-      font-family: 'Space Grotesk', sans-serif;
+      background: #05050d;
+      color: #dde3ee;
+      font-family: 'DM Sans', sans-serif;
       overflow-x: hidden;
     }
 
-    /* ── Grain overlay ── */
+    /* grain overlay */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.035;
-      pointer-events: none;
-      z-index: 9999;
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 9999;
     }
 
-    /* ── Aurora hero gradient ── */
+    /* scroll progress bar */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(to right, #00e5ff, #9b7ff7, #3dffa0);
+      z-index: 10001; transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(0,229,255,0.6);
+    }
+
     .aurora-bg {
-      background: linear-gradient(
-        -45deg,
-        #080810,
-        #0d0d20,
-        #0a1628,
-        #0f0a20,
-        #130d28,
-        #080d1a
-      );
+      background: linear-gradient(-45deg, #05050d, #0a0a1e, #060d1c, #0d0720, #08101a, #050510);
       background-size: 400% 400%;
-      animation: aurora 18s ease infinite;
+      animation: aurora 22s ease infinite;
     }
 
-    /* ── Aurora orb blobs ── */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-    }
-    .orb-cyan   { background: radial-gradient(circle, rgba(34,211,238,0.22) 0%, transparent 70%); }
-    .orb-violet { background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%); }
-    .orb-green  { background: radial-gradient(circle, rgba(74,222,128,0.14) 0%, transparent 70%); }
+    .orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+    .orb-cyan   { background: radial-gradient(circle, rgba(0,229,255,0.18) 0%, transparent 70%); }
+    .orb-violet { background: radial-gradient(circle, rgba(155,127,247,0.15) 0%, transparent 70%); }
+    .orb-green  { background: radial-gradient(circle, rgba(61,255,160,0.10) 0%, transparent 70%); }
 
-    /* ── Glass card ── */
     .glass {
-      background: rgba(255,255,255,0.035);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(255,255,255,0.032);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
       border: 1px solid rgba(255,255,255,0.07);
     }
-
-    /* ── Nav floating ── */
     .nav-glass {
-      background: rgba(8,8,16,0.75);
-      backdrop-filter: blur(20px) saturate(160%);
-      -webkit-backdrop-filter: blur(20px) saturate(160%);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(5,5,13,0.82);
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.055);
     }
 
-    /* ── Gradient text ── */
+    /* nav active indicator */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: #00e5ff;
+      box-shadow: 0 0 6px #00e5ff;
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 250ms ease;
+    }
+    .nav-link.active, .nav-link:hover { color: #fff; }
+    .nav-link.active::after { transform: scaleX(1); }
+
     .text-gradient-cyan {
-      background: linear-gradient(135deg, #22d3ee 0%, #a78bfa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      background: linear-gradient(135deg, #00e5ff 0%, #9b7ff7 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .text-gradient-violet {
-      background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      background: linear-gradient(135deg, #9b7ff7 0%, #ff79c6 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .text-gradient-green {
+      background: linear-gradient(135deg, #3dffa0 0%, #00e5ff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    /* ── Neon border on hover ── */
     .card-hover {
-      transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+      transition: border-color 260ms ease, box-shadow 260ms ease, transform 260ms ease;
+      cursor: pointer;
     }
     .card-hover:hover {
-      border-color: rgba(34,211,238,0.35);
-      box-shadow: 0 0 0 1px rgba(34,211,238,0.1), 0 12px 40px rgba(34,211,238,0.08), 0 4px 16px rgba(0,0,0,0.5);
-      transform: translateY(-3px);
+      border-color: rgba(0,229,255,0.3);
+      box-shadow: 0 0 0 1px rgba(0,229,255,0.08), 0 16px 48px rgba(0,229,255,0.07), 0 4px 16px rgba(0,0,0,0.6);
+      transform: translateY(-4px);
     }
 
-    /* ── Glowing button ── */
     .btn-primary {
-      background: linear-gradient(135deg, #22d3ee, #a78bfa);
-      color: #080810;
-      font-weight: 600;
-      letter-spacing: 0.01em;
+      background: linear-gradient(135deg, #00e5ff, #9b7ff7);
+      color: #05050d; font-weight: 700; letter-spacing: 0.01em;
       transition: opacity 200ms ease, box-shadow 200ms ease, transform 150ms ease;
+      cursor: pointer;
     }
     .btn-primary:hover {
-      opacity: 0.92;
-      box-shadow: 0 0 24px rgba(34,211,238,0.35), 0 0 48px rgba(167,139,250,0.2);
+      opacity: 0.9;
+      box-shadow: 0 0 28px rgba(0,229,255,0.4), 0 0 56px rgba(155,127,247,0.2);
       transform: translateY(-1px);
     }
-    .btn-primary:active { transform: translateY(0); }
-
     .btn-outline {
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,0.14); color: #dde3ee;
       transition: border-color 200ms ease, background 200ms ease;
+      cursor: pointer;
     }
-    .btn-outline:hover {
-      border-color: rgba(34,211,238,0.5);
-      background: rgba(34,211,238,0.06);
-    }
+    .btn-outline:hover { border-color: rgba(0,229,255,0.45); background: rgba(0,229,255,0.05); }
 
-    /* ── Skill tag ── */
     .skill-tag {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.07);
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease, background 200ms ease, border-color 200ms ease, color 200ms ease;
     }
-    .skill-tag:hover {
-      background: rgba(34,211,238,0.1);
-      border-color: rgba(34,211,238,0.3);
-      color: #22d3ee;
-    }
+    .skill-tag:hover { background: rgba(0,229,255,0.09); border-color: rgba(0,229,255,0.28); color: #00e5ff; }
+    .skill-tag.tag-visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Timeline line ── */
-    .timeline-line {
-      background: linear-gradient(to bottom, #22d3ee, #a78bfa, rgba(167,139,250,0));
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Link underline glow ── */
-    .link-glow {
-      position: relative;
-      color: #22d3ee;
-      text-decoration: none;
-    }
+    .link-glow { position: relative; color: #00e5ff; text-decoration: none; cursor: pointer; }
     .link-glow::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -2px;
-      width: 0; height: 1px;
-      background: #22d3ee;
-      box-shadow: 0 0 6px #22d3ee;
-      transition: width 250ms ease;
+      content: ''; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 1px; background: #00e5ff;
+      box-shadow: 0 0 6px #00e5ff; transition: width 250ms ease;
     }
     .link-glow:hover::after { width: 100%; }
 
-    /* ── Project image overlay ── */
     .proj-overlay {
-      background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(5,5,13,0.97) 0%, rgba(5,5,13,0.45) 55%, transparent 100%);
     }
 
-    /* ── Cursor dot (desktop) ── */
-    #cursor-dot {
-      position: fixed;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22d3ee;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: opacity 300ms ease;
-      box-shadow: 0 0 10px #22d3ee, 0 0 20px rgba(34,211,238,0.4);
-    }
-    #cursor-ring {
-      position: fixed;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      border: 1px solid rgba(34,211,238,0.4);
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%,-50%);
-      transition: transform 120ms ease, width 200ms ease, height 200ms ease, opacity 300ms ease;
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,229,255,0.18), rgba(155,127,247,0.18), transparent);
     }
 
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #080810; }
-    ::-webkit-scrollbar-thumb { background: rgba(34,211,238,0.3); border-radius: 4px; }
+    .terminal-cursor { display: inline-block; width: 2px; height: 1em; background: #00e5ff; vertical-align: text-bottom; animation: blink 1.1s step-end infinite; margin-left: 2px; }
 
-    /* ── Reduced motion ── */
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .aurora-bg { animation: none; }
+      .skill-tag { opacity: 1; transform: none; }
     }
 
-    /* ── Section divider ── */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(34,211,238,0.2), rgba(167,139,250,0.2), transparent);
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #05050d; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.25); border-radius: 4px; }
+
+    /* custom cursor */
+    #cursor-dot {
+      position: fixed; width: 7px; height: 7px; border-radius: 50%;
+      background: #00e5ff; pointer-events: none; z-index: 10000;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 10px #00e5ff, 0 0 22px rgba(0,229,255,0.4);
+      transition: opacity 300ms ease;
+    }
+    #cursor-ring {
+      position: fixed; width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid rgba(0,229,255,0.38); pointer-events: none; z-index: 10000;
+      transform: translate(-50%,-50%);
+      transition: width 200ms ease, height 200ms ease, border-color 200ms ease, opacity 300ms ease;
     }
 
-    /* ── Logo glitch ── */
-    .logo-glitch { position: relative; display: inline-block; }
-    .logo-glitch::before,
-    .logo-glitch::after {
-      content: attr(data-glitch);
-      position: absolute;
-      top: 0; left: 0;
-      font-family: 'Archivo', sans-serif;
-      font-weight: 900;
-      font-size: inherit;
-      letter-spacing: inherit;
-      opacity: 0;
-      pointer-events: none;
-    }
-    .logo-glitch:hover::before {
-      opacity: 1;
-      animation: glitch-a 0.45s steps(1) forwards;
-      color: #22d3ee;
-      clip-path: polygon(0 10%, 100% 10%, 100% 42%, 0 42%);
-    }
-    .logo-glitch:hover::after {
-      opacity: 1;
-      animation: glitch-b 0.45s steps(1) forwards;
-      color: #a78bfa;
-      clip-path: polygon(0 58%, 100% 58%, 100% 88%, 0 88%);
-    }
-    @keyframes glitch-a {
-      0%  { transform: translate(-3px, 0); opacity: 1; }
-      25% { transform: translate( 3px, 0); }
-      50% { transform: translate(-2px, 0); }
-      75% { transform: translate( 2px, 0); }
-      100%{ transform: translate( 0,   0); opacity: 0; }
-    }
-    @keyframes glitch-b {
-      0%  { transform: translate( 3px, 0); opacity: 1; }
-      25% { transform: translate(-3px, 0); }
-      50% { transform: translate( 2px, 0); }
-      75% { transform: translate(-2px, 0); }
-      100%{ transform: translate( 0,   0); opacity: 0; }
+    [data-tilt] { transform-style: preserve-3d; will-change: transform; }
+    .tilt-shine { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 10; transition: background 0.1s ease; }
+
+    .gpa-badge {
+      background: linear-gradient(135deg, rgba(61,255,160,0.12), rgba(0,229,255,0.08));
+      border: 1px solid rgba(61,255,160,0.25);
     }
 
-    /* ── Particles canvas ── */
-    #particles-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+    .tag-featured {
+      background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(155,127,247,0.15));
+      border: 1px solid rgba(0,229,255,0.25);
+      color: #00e5ff;
+    }
+    .tag-ai {
+      background: rgba(155,127,247,0.12);
+      border: 1px solid rgba(155,127,247,0.25);
+      color: #9b7ff7;
+    }
+    .tag-research {
+      background: rgba(61,255,160,0.1);
+      border: 1px solid rgba(61,255,160,0.25);
+      color: #3dffa0;
     }
 
-    /* ── Card tilt ── */
-    [data-tilt] {
-      transform-style: preserve-3d;
-      will-change: transform;
+    /* mobile menu slide animation */
+    #mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* toast */
+    #toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: rgba(12,12,26,0.95); border: 1px solid rgba(0,229,255,0.3);
+      color: #dde3ee; font-size: 0.8125rem; padding: 10px 20px; border-radius: 50px;
+      z-index: 20000; opacity: 0; pointer-events: none;
+      transition: opacity 300ms ease, transform 300ms ease;
+      box-shadow: 0 4px 24px rgba(0,229,255,0.15);
+      white-space: nowrap;
     }
-    .tilt-shine {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      z-index: 10;
-      transition: background 0.1s ease;
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* form field focus glow */
+    .form-field:focus {
+      outline: none;
+      border-color: rgba(0,229,255,0.4);
+      box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
     }
 
-    /* ── Magnetic button ── */
-    [data-magnetic] { will-change: transform; }
-
-    /* ── Scramble text ── */
-    .scramble-text { display: block; }
-
-    /* ── Skill tag stagger ── */
-    .skill-tag {
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.35s ease, transform 0.35s ease, background 200ms ease, border-color 200ms ease, color 200ms ease;
-    }
-    .skill-tag.tag-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* counter number animation */
+    .stat-num { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 
 <body class="font-body">
 
-  <!-- ── Custom cursor (desktop only) ── -->
+  <div id="scroll-progress" aria-hidden="true"></div>
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
 
-  <!-- ══════════════════════════════════════
-       NAV
-  ══════════════════════════════════════ -->
+  <!-- NAV -->
   <header class="nav-glass fixed top-0 left-0 right-0 z-50">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="#home" class="font-heading font-black text-xl tracking-tight logo-glitch" data-glitch="dev.">
-        <span class="text-gradient-cyan">Nahin</span><span class="text-white/80"></span>
+      <a href="#home" class="font-heading font-extrabold text-xl tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/50 rounded">
+        <span class="text-gradient-cyan">TN</span><span class="text-white/60 font-light">.</span>
       </a>
-
-      <!-- Desktop links -->
       <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-        <li><a href="#about"    class="hover:text-white transition-colors duration-200 cursor-pointer">About</a></li>
-        <li><a href="#projects" class="hover:text-white transition-colors duration-200 cursor-pointer">Projects</a></li>
-        <li><a href="#skills"   class="hover:text-white transition-colors duration-200 cursor-pointer">Skills</a></li>
-        <li><a href="#contact"  class="hover:text-white transition-colors duration-200 cursor-pointer">Contact</a></li>
+        <li><a href="#about"    class="nav-link hover:text-white transition-colors duration-200 py-1">About</a></li>
+        <li><a href="#projects" class="nav-link hover:text-white transition-colors duration-200 py-1">Projects</a></li>
+        <li><a href="#skills"   class="nav-link hover:text-white transition-colors duration-200 py-1">Skills</a></li>
+        <li><a href="#contact"  class="nav-link hover:text-white transition-colors duration-200 py-1">Contact</a></li>
       </ul>
-
-      <!-- CTA -->
-      <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm cursor-pointer" data-magnetic>
-        Hire me
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <!-- Mobile menu toggle -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="https://www.linkedin.com/in/takrim-nahin" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan border border-white/[0.07] hover:border-accent-cyan/30 transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/Paradoxical7" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm" data-magnetic>
+          GitHub
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
       <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer" aria-label="Toggle menu" aria-expanded="false">
         <svg id="icon-open" class="w-5 h-5 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
         <svg id="icon-close" class="w-5 h-5 text-slate-300 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </nav>
-
-    <!-- Mobile drawer -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 flex flex-col gap-4 text-sm font-medium text-slate-300">
-      <a href="#about"    class="hover:text-white transition-colors cursor-pointer py-1">About</a>
-      <a href="#projects" class="hover:text-white transition-colors cursor-pointer py-1">Projects</a>
-      <a href="#skills"   class="hover:text-white transition-colors cursor-pointer py-1">Skills</a>
-      <a href="#contact"  class="hover:text-white transition-colors cursor-pointer py-1">Contact</a>
-      <a href="#contact"  class="btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm mt-1 cursor-pointer">Hire me</a>
+    <div id="mobile-menu" class="md:hidden px-6 flex flex-col gap-3 text-sm font-medium text-slate-300">
+      <div class="pb-4 flex flex-col gap-3 pt-2">
+        <a href="#about"    class="hover:text-white transition-colors py-1">About</a>
+        <a href="#projects" class="hover:text-white transition-colors py-1">Projects</a>
+        <a href="#skills"   class="hover:text-white transition-colors py-1">Skills</a>
+        <a href="#contact"  class="hover:text-white transition-colors py-1">Contact</a>
+        <a href="https://github.com/Paradoxical7" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm mt-1">GitHub</a>
+      </div>
     </div>
   </header>
 
 
-  <!-- ══════════════════════════════════════
-       HERO
-  ══════════════════════════════════════ -->
+  <!-- HERO -->
   <section id="home" class="aurora-bg relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-
-    <!-- Orb blobs -->
-    <div class="orb orb-cyan  w-[700px] h-[700px] -top-40 -left-40 animate-spin-slow" style="animation-direction:reverse"></div>
-    <div class="orb orb-violet w-[600px] h-[600px] -bottom-32 -right-32 animate-spin-slow"></div>
-    <div class="orb orb-green  w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-
-    <!-- Particles canvas -->
-    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+    <div class="orb orb-cyan   w-[700px] h-[700px] -top-48 -left-48 animate-spin-slow" style="animation-direction:reverse"></div>
+    <div class="orb orb-violet w-[600px] h-[600px] -bottom-40 -right-40 animate-spin-slow"></div>
+    <div class="orb orb-green  w-[400px] h-[400px] top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2"></div>
+    <canvas id="particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true"></canvas>
 
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
       <!-- Status badge -->
@@ -415,120 +318,122 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-green opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-green"></span>
         </span>
-        Open to Fall 2026 Internships
+        Open to Fall 2026 Internships — Orlando, FL
       </div>
 
-      <!-- Headline -->
-      <h1 class="font-heading font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none tracking-tight mb-6 animate-fade-up" style="animation-delay:0.1s">
-        <span class="text-white scramble-text" data-final="Building">Building</span>
-        <span class="text-gradient-cyan scramble-text" data-final="Inteligent">Inteligent</span>
-        <span class="text-white scramble-text" data-final="Software">Software</span>
+      <div class="animate-fade-up mb-2" style="animation-delay:0.05s">
+        <span class="font-heading font-extrabold text-sm tracking-[0.3em] uppercase text-slate-500">Takrim Nahin</span>
+      </div>
+
+      <h1 class="font-heading font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tight mb-6 animate-fade-up" style="animation-delay:0.1s">
+        <span class="text-white block">Full-Stack</span>
+        <span class="text-gradient-cyan block">AI/ML</span>
+        <span class="text-white block">Engineer</span>
       </h1>
 
-      <!-- Subheading -->
-      <p class="text-slate-400 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed animate-fade-up" style="animation-delay:0.2s">
-        CS senior at UCF building full-stack apps and AI/ML systems. I turn complex problems into clean, working software.
+      <!-- Typewriter terminal -->
+      <div class="inline-flex items-center gap-1.5 glass px-4 py-2 rounded-xl text-sm font-mono text-slate-300 mb-10 animate-fade-up" style="animation-delay:0.2s">
+        <span class="text-accent-cyan">$</span>
+        <span id="terminal-text"></span>
+        <span class="terminal-cursor"></span>
+      </div>
+
+      <p class="text-slate-400 text-lg md:text-xl max-w-lg mx-auto mb-10 leading-relaxed animate-fade-up" style="animation-delay:0.25s">
+        Building full-stack apps and AI/ML systems. Co-authored quantum neural network research. Turning complex problems into clean, working software.
       </p>
 
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay:0.3s">
-        <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm cursor-pointer" data-magnetic>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay:0.35s">
+        <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm" data-magnetic>
           View My Work
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm cursor-pointer" data-magnetic>
+        <a href="#contact" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm" data-magnetic>
           Let's Talk
         </a>
       </div>
 
-      <!-- Scroll hint -->
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 text-xs animate-float">
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 text-xs animate-float" aria-hidden="true">
         <span class="tracking-widest uppercase">Scroll</span>
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </div>
     </div>
   </section>
 
 
-  <!-- ══════════════════════════════════════
-       ABOUT
-  ══════════════════════════════════════ -->
+  <!-- ABOUT -->
   <section id="about" class="py-32 max-w-6xl mx-auto px-6">
     <div class="reveal grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- Left: image + floating cards -->
+      <!-- Left: avatar + stat cards -->
       <div class="relative">
-        <!-- Avatar placeholder -->
         <div class="relative w-72 h-72 mx-auto lg:mx-0">
           <div class="w-full h-full rounded-3xl glass border border-white/10 overflow-hidden flex items-center justify-center">
-            <!-- Abstract avatar pattern -->
-            <svg viewBox="0 0 200 200" class="w-full h-full" aria-label="Developer avatar">
+            <svg viewBox="0 0 200 200" class="w-full h-full" aria-label="Takrim Nahin — TN monogram avatar">
               <defs>
                 <linearGradient id="av1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.4"/>
-                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.4"/>
+                  <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#9b7ff7" stop-opacity="0.5"/>
                 </linearGradient>
-                <linearGradient id="av2" x1="100%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.2"/>
-                  <stop offset="100%" stop-color="#4ade80" stop-opacity="0.2"/>
-                </linearGradient>
+                <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
               </defs>
-              <rect width="200" height="200" fill="#0f0f1a"/>
-              <circle cx="100" cy="75" r="40" fill="url(#av1)"/>
-              <ellipse cx="100" cy="170" rx="60" ry="40" fill="url(#av2)"/>
-              <circle cx="100" cy="75" r="28" fill="rgba(34,211,238,0.15)" stroke="rgba(34,211,238,0.3)" stroke-width="1"/>
-              <circle cx="100" cy="75" r="16" fill="rgba(167,139,250,0.3)"/>
+              <rect width="200" height="200" fill="#0c0c1a"/>
+              <circle cx="100" cy="100" r="68" fill="none" stroke="rgba(0,229,255,0.12)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="48" fill="none" stroke="rgba(155,127,247,0.15)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="28" fill="url(#glow1)"/>
+              <circle cx="168" cy="100" r="5" fill="#00e5ff" opacity="0.8"/>
+              <circle cx="32"  cy="100" r="5" fill="#9b7ff7" opacity="0.8"/>
+              <circle cx="100" cy="32"  r="5" fill="#3dffa0" opacity="0.8"/>
+              <circle cx="100" cy="168" r="5" fill="#00e5ff" opacity="0.6"/>
+              <circle cx="148" cy="52"  r="3.5" fill="#9b7ff7" opacity="0.7"/>
+              <circle cx="52"  cy="148" r="3.5" fill="#3dffa0" opacity="0.7"/>
+              <text x="100" y="107" text-anchor="middle" fill="rgba(0,229,255,0.9)" font-size="22" font-family="'Syne',sans-serif" font-weight="800">TN</text>
+              <line x1="100" y1="72" x2="100" y2="32" stroke="rgba(61,255,160,0.3)" stroke-width="1"/>
+              <line x1="100" y1="128" x2="100" y2="168" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
+              <line x1="72"  y1="100" x2="32"  y2="100" stroke="rgba(155,127,247,0.3)" stroke-width="1"/>
+              <line x1="128" y1="100" x2="168" y2="100" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
             </svg>
           </div>
-          <!-- Glow ring -->
           <div class="absolute -inset-4 rounded-3xl border border-accent-cyan/10 -z-10"></div>
           <div class="absolute -inset-8 rounded-3xl border border-accent-violet/5 -z-10"></div>
         </div>
 
-        <!-- Floating stat cards -->
-        <div class="glass card-hover absolute -bottom-6 -right-4 lg:-right-8 px-5 py-3 rounded-2xl text-center min-w-[110px]">
-          <div class="font-heading font-black text-2xl text-gradient-cyan counter" data-count="3" data-suffix="+">3+</div>
-          <div class="text-xs text-slate-500 mt-0.5">Years Exp.</div>
-        </div>
-        <div class="glass card-hover absolute -top-4 -right-4 lg:-right-8 px-5 py-3 rounded-2xl text-center min-w-[110px]">
-          <div class="font-heading font-black text-2xl text-gradient-violet counter" data-count="40" data-suffix="+">40+</div>
-          <div class="text-xs text-slate-500 mt-0.5">Projects</div>
-        </div>
       </div>
 
       <!-- Right: copy -->
       <div>
         <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-4">About Me</p>
-        <h2 class="font-heading font-black text-4xl md:text-5xl leading-tight text-white mb-6">
-          I build things that live on the internet
+        <h2 class="font-heading font-extrabold text-4xl md:text-5xl leading-tight text-white mb-6">
+          CS Senior building at the intersection of AI &amp; software
         </h2>
         <p class="text-slate-400 text-base leading-relaxed mb-5">
-          I'm a full-stack developer with a passion for creating performant, accessible, and visually compelling web applications. From zero to production, I own the entire lifecycle.
+          I'm a Computer Science senior at the University of Central Florida (Dec 2026) with a focus on full-stack development and AI/ML. I've shipped production agentic workflows, built RAG pipelines, and co-authored quantum neural network research using Qiskit — achieving 96% test accuracy with just 24 trainable parameters.
         </p>
         <p class="text-slate-400 text-base leading-relaxed mb-8">
-          When I'm not pushing code I'm exploring new design systems, contributing to open-source, or obsessing over typography.
+          Previously interned at Beige Corporation where I built automation systems using OpenAI API, Zapier, and Make.com. I care about writing clean architecture and building things people actually use.
         </p>
 
-        <!-- Quick facts -->
         <ul class="space-y-3 text-sm mb-8">
           <li class="flex items-center gap-3 text-slate-300">
-            <svg class="w-4 h-4 text-accent-cyan flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Based in <span class="text-white ml-1">San Francisco, CA</span>
+            <svg class="w-4 h-4 text-accent-cyan flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Based in <span class="text-white ml-1">Orlando, FL</span>
           </li>
           <li class="flex items-center gap-3 text-slate-300">
-            <svg class="w-4 h-4 text-accent-violet flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            Currently at <span class="text-white ml-1">Open to opportunities</span>
+            <svg class="w-4 h-4 text-accent-violet flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Graduating <span class="text-white ml-1">December 2026 · UCF CS</span>
           </li>
           <li class="flex items-center gap-3 text-slate-300">
-            <svg class="w-4 h-4 text-accent-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Reach me at <a href="mailto:hello@dev.io" class="link-glow ml-1">hello@dev.io</a>
+            <svg class="w-4 h-4 text-accent-green flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            U.S. Citizen ·
+            <button class="link-glow ml-1 bg-transparent border-0 p-0 font-inherit text-inherit" id="copy-email" aria-label="Copy email address">
+              nn389489@gmail.com
+            </button>
           </li>
         </ul>
 
-        <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold cursor-pointer">
-          See my projects
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -537,277 +442,314 @@
   <div class="section-divider max-w-6xl mx-auto"></div>
 
 
-  <!-- ══════════════════════════════════════
-       PROJECTS
-  ══════════════════════════════════════ -->
+  <!-- PROJECTS -->
   <section id="projects" class="py-32 max-w-6xl mx-auto px-6">
-    <!-- Header -->
     <div class="reveal text-center mb-16">
       <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-4">My Work</p>
-      <h2 class="font-heading font-black text-4xl md:text-5xl text-white leading-tight">Selected Projects</h2>
+      <h2 class="font-heading font-extrabold text-4xl md:text-5xl text-white leading-tight">Selected Projects</h2>
     </div>
 
-    <!-- Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Project 1 — featured (spans 2 cols) -->
-      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden lg:col-span-2 group cursor-pointer" data-tilt>
+      <!-- SyncedStudy — featured -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden lg:col-span-2 group" data-tilt>
         <div class="tilt-shine"></div>
-        <!-- Banner -->
         <div class="relative h-56 overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-br from-accent-cyan/20 via-transparent to-accent-violet/20"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-violet/15 via-transparent to-accent-cyan/15 transition-opacity duration-300 group-hover:opacity-70"></div>
           <div class="absolute inset-0 flex items-center justify-center">
-            <!-- Abstract project art -->
-            <svg viewBox="0 0 600 280" class="w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-              <rect width="600" height="280" fill="#0a0a18"/>
+            <svg viewBox="0 0 600 260" class="w-full h-full" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <rect width="600" height="260" fill="#0d0b1a"/>
               <defs>
-                <linearGradient id="p1g" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.3"/>
-                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.3"/>
+                <linearGradient id="ssg-feat" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#9b7ff7" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.5"/>
                 </linearGradient>
               </defs>
-              <!-- Browser chrome mockup -->
-              <rect x="40" y="30" width="520" height="220" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-              <rect x="40" y="30" width="520" height="36" rx="12" fill="rgba(255,255,255,0.05)"/>
-              <circle cx="68" cy="48" r="6" fill="rgba(244,114,182,0.6)"/>
-              <circle cx="88" cy="48" r="6" fill="rgba(251,191,36,0.6)"/>
-              <circle cx="108" cy="48" r="6" fill="rgba(74,222,128,0.6)"/>
-              <rect x="130" y="39" width="260" height="18" rx="9" fill="rgba(255,255,255,0.05)"/>
-              <!-- Content lines -->
-              <rect x="60" y="90" width="200" height="14" rx="4" fill="url(#p1g)"/>
-              <rect x="60" y="114" width="300" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
-              <rect x="60" y="130" width="260" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
-              <rect x="60" y="146" width="200" height="8" rx="4" fill="rgba(255,255,255,0.04)"/>
-              <!-- Card elements right -->
-              <rect x="330" y="88" width="200" height="120" rx="10" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.15)" stroke-width="1"/>
-              <rect x="346" y="106" width="100" height="10" rx="3" fill="rgba(34,211,238,0.4)"/>
-              <rect x="346" y="124" width="140" height="7" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <rect x="346" y="138" width="120" height="7" rx="3" fill="rgba(255,255,255,0.07)"/>
-              <rect x="346" y="172" width="60" height="22" rx="6" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <!-- three user panels -->
+              <rect x="30"  y="40" width="150" height="180" rx="12" fill="rgba(155,127,247,0.06)" stroke="rgba(155,127,247,0.2)" stroke-width="1"/>
+              <rect x="225" y="40" width="150" height="180" rx="12" fill="rgba(0,229,255,0.05)"   stroke="rgba(0,229,255,0.2)"   stroke-width="1"/>
+              <rect x="420" y="40" width="150" height="180" rx="12" fill="rgba(61,255,160,0.05)"  stroke="rgba(61,255,160,0.18)"  stroke-width="1"/>
+              <!-- avatars -->
+              <circle cx="105" cy="82"  r="20" fill="rgba(155,127,247,0.2)" stroke="rgba(155,127,247,0.5)" stroke-width="1.5"/>
+              <circle cx="105" cy="75"  r="9"  fill="rgba(155,127,247,0.6)"/>
+              <ellipse cx="105" cy="100" rx="14" ry="8" fill="rgba(155,127,247,0.35)"/>
+              <circle cx="300" cy="82"  r="20" fill="rgba(0,229,255,0.15)"  stroke="rgba(0,229,255,0.45)"   stroke-width="1.5"/>
+              <circle cx="300" cy="75"  r="9"  fill="rgba(0,229,255,0.6)"/>
+              <ellipse cx="300" cy="100" rx="14" ry="8" fill="rgba(0,229,255,0.3)"/>
+              <circle cx="495" cy="82"  r="20" fill="rgba(61,255,160,0.12)" stroke="rgba(61,255,160,0.4)"   stroke-width="1.5"/>
+              <circle cx="495" cy="75"  r="9"  fill="rgba(61,255,160,0.5)"/>
+              <ellipse cx="495" cy="100" rx="14" ry="8" fill="rgba(61,255,160,0.25)"/>
+              <!-- shared note block -->
+              <rect x="50"  y="118" width="110" height="8" rx="4" fill="rgba(155,127,247,0.25)"/>
+              <rect x="50"  y="132" width="88"  height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+              <rect x="50"  y="144" width="100" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="50"  y="156" width="75"  height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <rect x="50"  y="168" width="90"  height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
+              <rect x="245" y="118" width="110" height="8" rx="4" fill="rgba(0,229,255,0.2)"/>
+              <rect x="245" y="132" width="92"  height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+              <rect x="245" y="144" width="80"  height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="245" y="156" width="105" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <rect x="245" y="168" width="70"  height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
+              <rect x="440" y="118" width="110" height="8" rx="4" fill="rgba(61,255,160,0.18)"/>
+              <rect x="440" y="132" width="85"  height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+              <rect x="440" y="144" width="100" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+              <rect x="440" y="156" width="78"  height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <!-- connection lines between panels -->
+              <line x1="182" y1="130" x2="223" y2="130" stroke="rgba(155,127,247,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <line x1="377" y1="130" x2="418" y2="130" stroke="rgba(0,229,255,0.35)"   stroke-width="1.5" stroke-dasharray="4,3"/>
+              <!-- live indicator -->
+              <circle cx="290" cy="232" r="5" fill="#3dffa0"/>
+              <text x="304" y="237" fill="rgba(61,255,160,0.75)" font-size="11" font-family="monospace" font-weight="600">LIVE SESSION ACTIVE</text>
             </svg>
           </div>
           <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
-            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
-            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+            <a href="https://synced-study.vercel.app/" target="_blank" rel="noopener" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold">Live Demo</a>
+            <a href="https://github.com/Paradoxical7/SyncedStudy" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold">GitHub</a>
           </div>
         </div>
         <div class="p-6">
           <div class="flex items-start justify-between mb-3">
-            <span class="text-xs font-semibold text-accent-cyan bg-accent-cyan/10 px-3 py-1 rounded-full border border-accent-cyan/20">Featured</span>
-            <div class="flex items-center gap-1 text-slate-600">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full tag-featured">Featured · Real-time</span>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white mb-2">SaaS Analytics Dashboard</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">Real-time analytics platform handling 10M+ events/day with custom charting, cohort analysis, and automated alerting.</p>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">SyncedStudy</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Real-time collaborative study platform with live sessions, shared notes, and presence indicators. Multiple users can edit together with instant sync.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">React</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">TypeScript</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">PostgreSQL</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Redis</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">React</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Node.js</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Socket.io</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">PostgreSQL</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Redis</span>
           </div>
         </div>
       </article>
 
-      <!-- Project 2 -->
-      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group cursor-pointer" data-tilt>
+      <!-- DocuQuery -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group" data-tilt>
         <div class="tilt-shine"></div>
         <div class="relative h-48 overflow-hidden">
-          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.2) 0%, transparent 70%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center p-6">
-            <svg viewBox="0 0 240 180" class="w-full h-auto" aria-hidden="true">
-              <rect width="240" height="180" fill="#100f20"/>
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-cyan/15 via-transparent to-accent-violet/15"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-5">
+            <svg viewBox="0 0 240 170" class="w-full h-auto" aria-hidden="true">
+              <rect width="240" height="170" fill="#080814"/>
               <defs>
-                <linearGradient id="p2g" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#a78bfa"/>
-                  <stop offset="100%" stop-color="#f472b6"/>
+                <linearGradient id="dqg-sm" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#9b7ff7" stop-opacity="0.4"/>
                 </linearGradient>
               </defs>
-              <circle cx="120" cy="90" r="55" fill="none" stroke="url(#p2g)" stroke-width="1" opacity="0.3"/>
-              <circle cx="120" cy="90" r="38" fill="none" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
-              <circle cx="120" cy="90" r="18" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
-              <!-- Orbit nodes -->
-              <circle cx="175" cy="90" r="7" fill="rgba(244,114,182,0.6)"/>
-              <circle cx="65"  cy="90" r="7" fill="rgba(167,139,250,0.6)"/>
-              <circle cx="120" cy="35" r="7" fill="rgba(34,211,238,0.6)"/>
-              <circle cx="120" cy="145" r="7" fill="rgba(74,222,128,0.6)"/>
-              <text x="120" y="95" text-anchor="middle" fill="rgba(167,139,250,0.9)" font-size="14" font-family="monospace">API</text>
+              <!-- PDF doc -->
+              <rect x="15" y="20" width="80" height="130" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect x="15" y="20" width="80" height="22"  rx="6" fill="rgba(255,255,255,0.05)"/>
+              <text x="55" y="36" text-anchor="middle" fill="rgba(244,114,182,0.8)" font-size="8" font-family="monospace" font-weight="600">PDF</text>
+              <rect x="24" y="52" width="62" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+              <rect x="24" y="62" width="50" height="4" rx="2" fill="rgba(255,255,255,0.07)"/>
+              <rect x="24" y="72" width="58" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+              <rect x="24" y="82" width="44" height="4" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="24" y="92" width="55" height="4" rx="2" fill="rgba(255,255,255,0.07)"/>
+              <!-- arrow -->
+              <path d="M100 85 L118 85" stroke="rgba(0,229,255,0.6)" stroke-width="1.5" marker-end="url(#arr-sm)"/>
+              <defs><marker id="arr-sm" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="rgba(0,229,255,0.6)"/></marker></defs>
+              <text x="109" y="80" text-anchor="middle" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace">RAG</text>
+              <!-- chat panel -->
+              <rect x="122" y="15" width="104" height="140" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+              <rect x="122" y="15" width="104" height="20"  rx="6" fill="rgba(255,255,255,0.04)"/>
+              <text x="130" y="29" fill="rgba(0,229,255,0.7)" font-size="7" font-family="monospace">DocuQuery</text>
+              <rect x="148" y="44" width="68" height="18" rx="5" fill="url(#dqg-sm)"/>
+              <text x="182" y="57" text-anchor="middle" fill="rgba(5,5,13,0.9)" font-size="6" font-family="monospace">What's in here?</text>
+              <rect x="130" y="72" width="72" height="22" rx="5" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect x="136" y="79" width="50" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+              <rect x="136" y="87" width="38" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+              <rect x="148" y="104" width="68" height="16" rx="5" fill="rgba(155,127,247,0.25)"/>
+              <text x="182" y="115" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="6" font-family="monospace">Summarize §3</text>
             </svg>
           </div>
           <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
-            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
-            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+            <a href="https://docuquery-c4ic.onrender.com/" target="_blank" rel="noopener" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold">Live Demo</a>
+            <a href="https://github.com/Paradoxical7/Docuquery" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold">GitHub</a>
           </div>
         </div>
         <div class="p-5">
-          <h3 class="font-heading font-bold text-lg text-white mb-2">REST API Gateway</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">High-throughput API gateway with auth, rate limiting, and request transformation at the edge.</p>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full tag-featured inline-block mb-3">AI/ML</span>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">DocuQuery</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Flask RAG pipeline for PDF Q&amp;A. Upload any document and query it with natural language — powered by OpenAI embeddings and vector search.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Node.js</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Fastify</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Docker</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Flask</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Python</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">OpenAI API</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">RAG</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Vector Search</span>
           </div>
         </div>
       </article>
 
-      <!-- Project 3 -->
-      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group cursor-pointer" data-tilt>
+      <!-- QNN Research -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group" data-tilt>
         <div class="tilt-shine"></div>
         <div class="relative h-48 overflow-hidden">
-          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.15) 0%, transparent 70%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center p-6">
-            <svg viewBox="0 0 240 180" class="w-full h-auto" aria-hidden="true">
-              <rect width="240" height="180" fill="#080f10"/>
-              <!-- Code editor aesthetic -->
-              <rect x="20" y="20" width="200" height="140" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <rect x="20" y="20" width="200" height="28" rx="8" fill="rgba(255,255,255,0.04)"/>
-              <circle cx="38" cy="34" r="5" fill="rgba(244,114,182,0.5)"/>
-              <circle cx="54" cy="34" r="5" fill="rgba(251,191,36,0.5)"/>
-              <circle cx="70" cy="34" r="5" fill="rgba(74,222,128,0.5)"/>
-              <!-- Code lines -->
-              <rect x="36" y="60" width="30" height="7" rx="2" fill="rgba(167,139,250,0.6)"/>
-              <rect x="72" y="60" width="50" height="7" rx="2" fill="rgba(34,211,238,0.5)"/>
-              <rect x="36" y="76" width="20" height="7" rx="2" fill="rgba(74,222,128,0.6)"/>
-              <rect x="62" y="76" width="80" height="7" rx="2" fill="rgba(255,255,255,0.15)"/>
-              <rect x="36" y="92" width="15" height="7" rx="2" fill="rgba(244,114,182,0.5)"/>
-              <rect x="57" y="92" width="60" height="7" rx="2" fill="rgba(255,255,255,0.1)"/>
-              <rect x="36" y="108" width="30" height="7" rx="2" fill="rgba(167,139,250,0.6)"/>
-              <rect x="72" y="108" width="40" height="7" rx="2" fill="rgba(34,211,238,0.4)"/>
-              <rect x="36" y="124" width="100" height="7" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="36" y="140" width="15" height="7" rx="2" fill="rgba(74,222,128,0.6)"/>
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(61,255,160,0.15) 0%, transparent 70%)"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-5">
+            <svg viewBox="0 0 240 170" class="w-full h-auto" aria-hidden="true">
+              <rect width="240" height="170" fill="#050e0a"/>
+              <line x1="20" y1="55"  x2="220" y2="55"  stroke="rgba(61,255,160,0.2)"  stroke-width="1"/>
+              <line x1="20" y1="85"  x2="220" y2="85"  stroke="rgba(0,229,255,0.2)"   stroke-width="1"/>
+              <line x1="20" y1="115" x2="220" y2="115" stroke="rgba(155,127,247,0.2)" stroke-width="1"/>
+              <rect x="40" y="44"  width="22" height="22" rx="4" fill="rgba(61,255,160,0.2)"  stroke="rgba(61,255,160,0.5)"  stroke-width="1"/>
+              <rect x="40" y="74"  width="22" height="22" rx="4" fill="rgba(0,229,255,0.2)"   stroke="rgba(0,229,255,0.5)"   stroke-width="1"/>
+              <rect x="40" y="104" width="22" height="22" rx="4" fill="rgba(155,127,247,0.2)" stroke="rgba(155,127,247,0.5)" stroke-width="1"/>
+              <text x="51" y="59"  text-anchor="middle" fill="rgba(61,255,160,0.9)"  font-size="8" font-family="monospace">H</text>
+              <text x="51" y="89"  text-anchor="middle" fill="rgba(0,229,255,0.9)"   font-size="8" font-family="monospace">Rx</text>
+              <text x="51" y="119" text-anchor="middle" fill="rgba(155,127,247,0.9)" font-size="8" font-family="monospace">Rz</text>
+              <circle cx="105" cy="55" r="8" fill="none" stroke="rgba(61,255,160,0.6)" stroke-width="1.5"/>
+              <circle cx="105" cy="55" r="2" fill="rgba(61,255,160,0.8)"/>
+              <line x1="105" y1="63" x2="105" y2="77" stroke="rgba(61,255,160,0.5)" stroke-width="1"/>
+              <circle cx="105" cy="85" r="7" fill="rgba(61,255,160,0.25)" stroke="rgba(61,255,160,0.5)" stroke-width="1.5"/>
+              <line x1="99"  y1="85" x2="111" y2="85" stroke="rgba(61,255,160,0.8)" stroke-width="1.5"/>
+              <line x1="105" y1="79" x2="105" y2="91" stroke="rgba(61,255,160,0.8)" stroke-width="1.5"/>
+              <rect x="175" y="44"  width="22" height="22" rx="4" fill="rgba(255,183,71,0.15)" stroke="rgba(255,183,71,0.4)" stroke-width="1"/>
+              <rect x="175" y="74"  width="22" height="22" rx="4" fill="rgba(255,183,71,0.15)" stroke="rgba(255,183,71,0.4)" stroke-width="1"/>
+              <rect x="175" y="104" width="22" height="22" rx="4" fill="rgba(255,183,71,0.15)" stroke="rgba(255,183,71,0.4)" stroke-width="1"/>
+              <text x="186" y="59"  text-anchor="middle" fill="rgba(255,183,71,0.8)" font-size="7" font-family="monospace">M</text>
+              <text x="186" y="89"  text-anchor="middle" fill="rgba(255,183,71,0.8)" font-size="7" font-family="monospace">M</text>
+              <text x="186" y="119" text-anchor="middle" fill="rgba(255,183,71,0.8)" font-size="7" font-family="monospace">M</text>
+              <rect x="60" y="140" width="120" height="20" rx="6" fill="rgba(61,255,160,0.1)" stroke="rgba(61,255,160,0.25)" stroke-width="1"/>
+              <text x="120" y="154" text-anchor="middle" fill="rgba(61,255,160,0.9)" font-size="10" font-family="monospace">96% acc · 24 params</text>
             </svg>
           </div>
           <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
-            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
-            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+            <span class="tag-research text-xs font-semibold px-3 py-1.5 rounded-xl">Research Paper</span>
           </div>
         </div>
         <div class="p-5">
-          <h3 class="font-heading font-bold text-lg text-white mb-2">Dev Environment CLI</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">Automated local dev setup tool with templates, env management, and one-command spin-up.</p>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full tag-research inline-block mb-3">Research</span>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Quantum Neural Network</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Co-authored QNN paper using Qiskit with a novel white/black amplitude encoding scheme. Achieved 96% test accuracy on MNIST with only 24 trainable parameters.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Go</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Shell</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">YAML</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Qiskit</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Python</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Quantum ML</span>
           </div>
         </div>
       </article>
 
-      <!-- Project 4 -->
-      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group cursor-pointer" data-tilt>
+      <!-- SmartPath -->
+      <article class="reveal glass card-hover border border-white/[0.07] rounded-2xl overflow-hidden group" data-tilt>
         <div class="tilt-shine"></div>
         <div class="relative h-48 overflow-hidden">
-          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(34,211,238,0.15) 0%, transparent 70%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center p-6">
-            <svg viewBox="0 0 240 180" class="w-full h-auto" aria-hidden="true">
-              <rect width="240" height="180" fill="#080810"/>
-              <!-- Mobile frame -->
-              <rect x="85" y="10" width="70" height="160" rx="14" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-              <rect x="95" y="22" width="50" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
-              <rect x="113" y="24" width="14" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
-              <!-- App content -->
-              <rect x="92" y="40" width="56" height="8" rx="3" fill="rgba(34,211,238,0.5)"/>
-              <rect x="92" y="56" width="56" height="30" rx="6" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.15)" stroke-width="1"/>
-              <rect x="98" y="62" width="30" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
-              <rect x="98" y="72" width="20" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
-              <rect x="92" y="94" width="56" height="30" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
-              <rect x="98" y="100" width="35" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
-              <rect x="98" y="110" width="25" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
-              <rect x="92" y="132" width="56" height="22" rx="8" fill="rgba(34,211,238,0.15)" stroke="rgba(34,211,238,0.3)" stroke-width="1"/>
-              <rect x="107" y="140" width="26" height="6" rx="2" fill="rgba(34,211,238,0.7)"/>
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 0%, rgba(0,229,255,0.15) 0%, transparent 70%)"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-5">
+            <svg viewBox="0 0 240 170" class="w-full h-auto" aria-hidden="true">
+              <rect width="240" height="170" fill="#040d10"/>
+              <rect x="15"  y="15"  width="210" height="140" rx="8"  fill="rgba(0,229,255,0.03)"  stroke="rgba(0,229,255,0.1)"   stroke-width="1"/>
+              <line x1="15"  y1="85"  x2="225" y2="85"  stroke="rgba(255,255,255,0.08)" stroke-width="8"/>
+              <line x1="120" y1="15"  x2="120" y2="155" stroke="rgba(255,255,255,0.08)" stroke-width="8"/>
+              <line x1="15"  y1="45"  x2="225" y2="45"  stroke="rgba(255,255,255,0.05)" stroke-width="5"/>
+              <line x1="15"  y1="130" x2="225" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="5"/>
+              <circle cx="120" cy="85" r="14" fill="rgba(0,229,255,0.12)" stroke="rgba(0,229,255,0.4)" stroke-width="1.5"/>
+              <!-- ambulance (SVG, no emoji) -->
+              <rect x="56" y="79" width="32" height="14" rx="3" fill="rgba(244,114,182,0.7)"/>
+              <rect x="62" y="75" width="12" height="8"  rx="2" fill="rgba(244,114,182,0.5)"/>
+              <line x1="72" y1="83" x2="72" y2="89" stroke="white" stroke-width="1.5"/>
+              <line x1="69" y1="86" x2="75" y2="86" stroke="white" stroke-width="1.5"/>
+              <circle cx="61"  cy="94" r="3" fill="rgba(255,255,255,0.6)"/>
+              <circle cx="79"  cy="94" r="3" fill="rgba(255,255,255,0.6)"/>
+              <rect x="126" y="68" width="10" height="28" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <circle cx="131" cy="73" r="3.5" fill="#3dffa0"/>
+              <circle cx="131" cy="83" r="3.5" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="131" cy="93" r="3.5" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="120" cy="85" r="25" fill="none" stroke="rgba(61,255,160,0.3)"  stroke-width="1" stroke-dasharray="4,4"/>
+              <circle cx="120" cy="85" r="40" fill="none" stroke="rgba(61,255,160,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+              <text x="120" y="148" text-anchor="middle" fill="rgba(61,255,160,0.6)" font-size="8" font-family="monospace">Traffic Preemption Active</text>
             </svg>
           </div>
           <div class="proj-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 gap-2">
-            <a href="#" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">Live Demo</a>
-            <a href="#" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold" onclick="return false">GitHub</a>
+            <a href="https://github.com/Paradoxical7/Pathclear" target="_blank" rel="noopener" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold">GitHub</a>
           </div>
         </div>
         <div class="p-5">
-          <h3 class="font-heading font-bold text-lg text-white mb-2">Mobile Finance App</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-4">Cross-platform finance tracker with biometric auth, budget forecasting, and AI insights.</p>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">SmartPath</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">Emergency vehicle traffic preemption simulation. Interactive map-based demo showing signal prioritization corridors in real time.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">React Native</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Expo</span>
-            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full cursor-default">Supabase</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">React</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Leaflet.js</span>
+            <span class="skill-tag text-xs text-slate-400 px-3 py-1 rounded-full">Simulation</span>
           </div>
         </div>
       </article>
 
-    </div><!-- /grid -->
+    </div>
   </section>
 
 
   <div class="section-divider max-w-6xl mx-auto"></div>
 
 
-  <!-- ══════════════════════════════════════
-       SKILLS
-  ══════════════════════════════════════ -->
+  <!-- SKILLS -->
   <section id="skills" class="py-32 max-w-6xl mx-auto px-6">
     <div class="reveal text-center mb-16">
       <p class="text-accent-violet text-sm font-semibold tracking-widest uppercase mb-4">Expertise</p>
-      <h2 class="font-heading font-black text-4xl md:text-5xl text-white leading-tight">Skills &amp; Stack</h2>
+      <h2 class="font-heading font-extrabold text-4xl md:text-5xl text-white leading-tight">Skills &amp; Stack</h2>
     </div>
 
     <div class="reveal grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <!-- Frontend -->
       <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
         <div class="w-10 h-10 rounded-xl bg-accent-cyan/10 border border-accent-cyan/20 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <svg class="w-5 h-5 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
         <h3 class="font-heading font-bold text-white mb-3">Frontend</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">React</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Next.js</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">TypeScript</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Tailwind</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Framer</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">React</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">JavaScript</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Bootstrap</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Tailwind</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Leaflet.js</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">HTML/CSS</span>
         </div>
       </div>
 
-      <!-- Backend -->
       <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
         <div class="w-10 h-10 rounded-xl bg-accent-violet/10 border border-accent-violet/20 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-accent-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+          <svg class="w-5 h-5 text-accent-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         </div>
-        <h3 class="font-heading font-bold text-white mb-3">Backend</h3>
+        <h3 class="font-heading font-bold text-white mb-3">Backend &amp; DB</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Node.js</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Go</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Python</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">GraphQL</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">REST</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Python</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Flask</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">FastAPI</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Node.js</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">PostgreSQL</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">SQLite</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Redis</span>
         </div>
       </div>
 
-      <!-- Data -->
       <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
         <div class="w-10 h-10 rounded-xl bg-accent-green/10 border border-accent-green/20 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          <svg class="w-5 h-5 text-accent-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12 2.1 9.1"/><path d="m12 12 7.6-9.6"/><path d="M12 12v10"/></svg>
         </div>
-        <h3 class="font-heading font-bold text-white mb-3">Data &amp; DB</h3>
+        <h3 class="font-heading font-bold text-white mb-3">AI / ML</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">PostgreSQL</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">MongoDB</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Redis</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Prisma</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Drizzle</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">OpenAI API</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">RAG Pipelines</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Qiskit</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Zapier</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Make.com</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Agentic AI</span>
         </div>
       </div>
 
-      <!-- DevOps -->
       <div class="glass card-hover border border-white/[0.07] rounded-2xl p-6">
-        <div class="w-10 h-10 rounded-xl bg-accent-rose/10 border border-accent-rose/20 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-accent-rose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <div class="w-10 h-10 rounded-xl bg-accent-amber/10 border border-accent-amber/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
         </div>
-        <h3 class="font-heading font-bold text-white mb-3">DevOps</h3>
+        <h3 class="font-heading font-bold text-white mb-3">Tools &amp; Systems</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Docker</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">AWS</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">CI/CD</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">Terraform</span>
-          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg cursor-default">K8s</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Git</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Linux</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">PowerShell</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">Docker</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">DigitalOcean</span>
+          <span class="skill-tag text-xs text-slate-400 px-2.5 py-1 rounded-lg">SQLAlchemy</span>
         </div>
       </div>
 
@@ -818,342 +760,292 @@
   <div class="section-divider max-w-6xl mx-auto"></div>
 
 
-  <!-- ══════════════════════════════════════
-       CONTACT
-  ══════════════════════════════════════ -->
+  <!-- CONTACT -->
   <section id="contact" class="py-32">
-    <!-- Aurora blob behind contact -->
     <div class="relative overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] orb orb-cyan opacity-20 -z-0"></div>
-
       <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
         <div class="reveal">
           <p class="text-accent-cyan text-sm font-semibold tracking-widest uppercase mb-4">Get In Touch</p>
-          <h2 class="font-heading font-black text-4xl md:text-5xl text-white leading-tight mb-6">
-            Let's build something<br/>
-            <span class="text-gradient-cyan">amazing together</span>
+          <h2 class="font-heading font-extrabold text-4xl md:text-5xl text-white leading-tight mb-6">
+            Open to internships &amp;<br/>
+            <span class="text-gradient-cyan">great projects</span>
           </h2>
           <p class="text-slate-400 text-base leading-relaxed mb-12">
-            I'm currently open to new opportunities. Whether you have a project in mind, want to collaborate, or just want to say hi — my inbox is always open.
+            Looking for Fall 2026 SWE / AI/ML internship opportunities in the Orlando area. If you're building something interesting or have a role that fits, let's talk.
           </p>
         </div>
 
-        <!-- Contact card -->
-        <div class="reveal glass border border-white/[0.07] rounded-3xl p-8 mb-8">
-          <form class="space-y-4" onsubmit="return false">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="text-left">
-                <label for="name" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Name</label>
-                <input id="name" type="text" placeholder="Jane Doe"
-                  class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-accent-cyan/40 focus:ring-1 focus:ring-accent-cyan/20 transition-all duration-200" />
+        <div class="reveal glass border border-white/[0.07] rounded-3xl p-8 mb-8 text-left">
+          <form id="contact-form" novalidate>
+            <div class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-name" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Name</label>
+                  <input id="contact-name" name="name" type="text" placeholder="Jane Doe" required
+                    class="form-field w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 transition-all duration-200"/>
+                </div>
+                <div>
+                  <label for="contact-email" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Email</label>
+                  <input id="contact-email" name="email" type="email" placeholder="you@company.com" required
+                    class="form-field w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 transition-all duration-200"/>
+                </div>
               </div>
-              <div class="text-left">
-                <label for="email" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Email</label>
-                <input id="email" type="email" placeholder="jane@example.com"
-                  class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-accent-cyan/40 focus:ring-1 focus:ring-accent-cyan/20 transition-all duration-200" />
+              <div>
+                <label for="contact-message" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Message</label>
+                <textarea id="contact-message" name="message" rows="4" placeholder="Tell me about the role or project..." required
+                  class="form-field w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 transition-all duration-200 resize-none"></textarea>
               </div>
+              <button type="submit" id="submit-btn" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
+                <span id="submit-label">Send Message</span>
+                <svg id="submit-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
             </div>
-            <div class="text-left">
-              <label for="message" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Message</label>
-              <textarea id="message" rows="4" placeholder="Tell me about your project..."
-                class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-accent-cyan/40 focus:ring-1 focus:ring-accent-cyan/20 transition-all duration-200 resize-none"></textarea>
-            </div>
-            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm cursor-pointer flex items-center justify-center gap-2">
-              Send Message
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            </button>
           </form>
         </div>
 
-        <!-- Social links -->
         <div class="reveal flex items-center justify-center gap-4">
-          <!-- GitHub -->
-          <a href="#" onclick="return false" aria-label="GitHub" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://github.com/Paradoxical7" target="_blank" rel="noopener" aria-label="GitHub" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
-          <!-- LinkedIn -->
-          <a href="#" onclick="return false" aria-label="LinkedIn" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <a href="https://www.linkedin.com/in/takrim-nahin" target="_blank" rel="noopener" aria-label="LinkedIn" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <!-- Twitter/X -->
-          <a href="#" onclick="return false" aria-label="Twitter" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <!-- Email -->
-          <a href="mailto:hello@dev.io" aria-label="Email" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </a>
+          <button id="email-btn" aria-label="Copy email address" class="glass border border-white/[0.07] w-11 h-11 rounded-xl flex items-center justify-center text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </button>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="border-t border-white/[0.05] py-8">
     <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-      <div class="font-heading font-black">
-        <span class="text-gradient-cyan">dev</span><span class="text-slate-600">.</span>
+      <div class="font-heading font-extrabold">
+        <span class="text-gradient-cyan">TN</span><span class="text-slate-700">.</span>
       </div>
-      <p>&copy; 2026 — Designed &amp; built with precision</p>
-      <a href="#home" class="hover:text-slate-400 transition-colors cursor-pointer flex items-center gap-1.5">
+      <p>&copy; 2026 Takrim Nahin — Built from scratch</p>
+      <a href="#home" class="hover:text-slate-400 transition-colors flex items-center gap-1.5 cursor-pointer">
         Back to top
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </a>
     </div>
   </footer>
 
 
-  <!-- ══════════════════════════════════════
-       JS
-  ══════════════════════════════════════ -->
   <script>
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+    const pRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = () => window.matchMedia('(hover: none)').matches;
 
-    // ── Custom cursor
-    const dot  = document.getElementById('cursor-dot');
+    // ── scroll progress bar ──
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+
+    // ── custom cursor ──
+    const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
-    let mx = -100, my = -100, rx = -100, ry = -100;
+    let mx=-100,my=-100,rx=-100,ry=-100;
+    if (!isTouch()) {
+      document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+      setInterval(() => { rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; }, 16);
+      document.querySelectorAll('a,button,[class*="card-hover"]').forEach(el => {
+        el.addEventListener('mouseenter', () => { ring.style.width='50px'; ring.style.height='50px'; ring.style.borderColor='rgba(0,229,255,0.55)'; });
+        el.addEventListener('mouseleave', () => { ring.style.width='30px'; ring.style.height='30px'; ring.style.borderColor='rgba(0,229,255,0.38)'; });
+      });
+    } else { dot.style.display='none'; ring.style.display='none'; }
 
-    if (!isTouchDevice()) {
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        dot.style.left = mx + 'px';
-        dot.style.top  = my + 'px';
-      });
-      setInterval(() => {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        ring.style.left = rx + 'px';
-        ring.style.top  = ry + 'px';
-      }, 16);
-      document.querySelectorAll('a, button, [class*="card-hover"]').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          ring.style.width  = '52px';
-          ring.style.height = '52px';
-          ring.style.borderColor = 'rgba(34,211,238,0.6)';
-        });
-        el.addEventListener('mouseleave', () => {
-          ring.style.width  = '32px';
-          ring.style.height = '32px';
-          ring.style.borderColor = 'rgba(34,211,238,0.4)';
-        });
-      });
-    } else {
-      dot.style.display  = 'none';
-      ring.style.display = 'none';
+    // ── toast helper ──
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
     }
 
-    // ── Particles canvas
-    (function initParticles() {
-      if (prefersReducedMotion) return;
+    // ── copy email ──
+    const EMAIL = 'nn389489@gmail.com';
+    function copyEmail() {
+      navigator.clipboard.writeText(EMAIL).then(() => showToast('Email copied to clipboard')).catch(() => showToast(EMAIL));
+    }
+    document.getElementById('copy-email').addEventListener('click', copyEmail);
+    document.getElementById('email-btn').addEventListener('click', copyEmail);
+
+    // ── typewriter terminal ──
+    const phrases = [
+      'UCF CS \'26 · GPA 3.71 · U.S. Citizen',
+      'Full-Stack Dev · AI/ML · Quantum Research',
+      'Open to Fall 2026 Internships',
+    ];
+    const termEl = document.getElementById('terminal-text');
+    let pi = 0, ci = 0, deleting = false, wait = 0;
+    function typeWriter() {
+      if (pRM) { termEl.textContent = phrases[0]; return; }
+      const phrase = phrases[pi];
+      if (!deleting) {
+        termEl.textContent = phrase.slice(0, ci + 1);
+        ci++;
+        if (ci === phrase.length) { deleting = true; wait = 60; setTimeout(typeWriter, 2200); return; }
+      } else {
+        if (wait > 0) { wait--; setTimeout(typeWriter, 16); return; }
+        termEl.textContent = phrase.slice(0, ci - 1);
+        ci--;
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(typeWriter, 400); return; }
+      }
+      setTimeout(typeWriter, deleting ? 28 : 48);
+    }
+    typeWriter();
+
+    // ── particles ──
+    (function() {
+      if (pRM) return;
       const canvas = document.getElementById('particles-canvas');
-      if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      const COUNT = 55;
-      let W, H, particles = [];
-
-      function resize() {
-        W = canvas.width  = canvas.offsetWidth;
-        H = canvas.height = canvas.offsetHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
-
-      function Particle() {
-        this.x  = Math.random() * W;
-        this.y  = Math.random() * H;
-        this.vx = (Math.random() - 0.5) * 0.35;
-        this.vy = (Math.random() - 0.5) * 0.35;
-        this.r  = Math.random() * 1.2 + 0.4;
-        this.a  = Math.random() * 0.35 + 0.08;
-      }
-      Particle.prototype.update = function() {
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < 0 || this.x > W) this.vx *= -1;
-        if (this.y < 0 || this.y > H) this.vy *= -1;
-      };
-      Particle.prototype.draw = function() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,255,255,' + this.a + ')';
-        ctx.fill();
-      };
-
-      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
-
-      function loop() {
-        ctx.clearRect(0, 0, W, H);
-        for (let i = 0; i < particles.length; i++) {
-          particles[i].update();
-          particles[i].draw();
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const d  = Math.sqrt(dx * dx + dy * dy);
-            if (d < 110) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'rgba(34,211,238,' + ((1 - d / 110) * 0.07) + ')';
-              ctx.lineWidth = 0.6;
-              ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(loop);
-      }
+      let W,H,particles=[];
+      function resize() { W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+      window.addEventListener('resize', resize, { passive: true }); resize();
+      function P() { this.x=Math.random()*W; this.y=Math.random()*H; this.vx=(Math.random()-.5)*.3; this.vy=(Math.random()-.5)*.3; this.r=Math.random()*1.1+.35; this.a=Math.random()*.28+.07; }
+      P.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1;};
+      P.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+this.a+')';ctx.fill();};
+      for(let i=0;i<50;i++)particles.push(new P());
+      function loop(){ctx.clearRect(0,0,W,H);for(let i=0;i<particles.length;i++){particles[i].update();particles[i].draw();for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<105){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='rgba(0,229,255,'+((1-d/105)*0.065)+')';ctx.lineWidth=.5;ctx.stroke();}}}requestAnimationFrame(loop);}
       loop();
     })();
 
-    // ── Text scramble
-    (function initScramble() {
-      if (prefersReducedMotion) return;
-      const CHARS = '!<>-_/[]{}=+*?#@0123456789ABCDEFabcdef';
-      function scramble(el, delay) {
-        const final = el.dataset.final || el.textContent;
-        const len = final.length;
-        let frame = 0;
-        const totalFrames = 38;
-        setTimeout(() => {
-          const id = setInterval(() => {
-            el.textContent = Array.from({length: len}, (_, i) => {
-              if (frame / totalFrames > i / len) return final[i];
-              return CHARS[Math.floor(Math.random() * CHARS.length)];
-            }).join('');
-            if (++frame > totalFrames) { el.textContent = final; clearInterval(id); }
-          }, 28);
-        }, delay);
-      }
-      document.querySelectorAll('.scramble-text').forEach((el, i) => scramble(el, 400 + i * 220));
-    })();
-
-    // ── Animated counters
-    function runCounter(el) {
-      if (prefersReducedMotion) return;
-      const target = parseInt(el.dataset.count, 10);
-      const suffix = el.dataset.suffix || '';
-      const dur = 1400;
-      const start = performance.now();
-      function tick(now) {
-        const p = Math.min((now - start) / dur, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.floor(ease * target) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    // ── Scroll reveal + counter + tag stagger
+    // ── scroll reveal ──
     const revealEls = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
+    const obs = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-            // counters
-            entry.target.querySelectorAll('.counter').forEach(runCounter);
-            // stagger skill tags
-            entry.target.querySelectorAll('.skill-tag').forEach((tag, idx) => {
-              setTimeout(() => tag.classList.add('tag-visible'), idx * 55 + 80);
-            });
-          }, i * 80);
-          revealObs.unobserve(entry.target);
+            entry.target.querySelectorAll('.skill-tag').forEach((t,idx)=>setTimeout(()=>t.classList.add('tag-visible'),idx*50+80));
+          }, i * 75);
+          obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
-    revealEls.forEach(el => revealObs.observe(el));
+    revealEls.forEach(el => obs.observe(el));
+    document.querySelectorAll('.skill-tag').forEach(t => { if (!t.closest('.reveal')) t.classList.add('tag-visible'); });
 
-    // make already-visible skill tags show up without observer (hero section etc.)
-    document.querySelectorAll('.skill-tag').forEach(t => {
-      if (!t.closest('.reveal')) t.classList.add('tag-visible');
-    });
+    // ── animated stat counters ──
+    const statEls = document.querySelectorAll('.stat-num[data-count]');
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.count);
+        const decimals = parseInt(el.dataset.decimals || '0');
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * ease).toFixed(decimals) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        if (!pRM) requestAnimationFrame(tick);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    statEls.forEach(el => counterObs.observe(el));
 
-    // ── 3D card tilt
-    if (!isTouchDevice() && !prefersReducedMotion) {
+    // ── 3D tilt ──
+    if (!isTouch() && !pRM) {
       document.querySelectorAll('[data-tilt]').forEach(card => {
         const shine = card.querySelector('.tilt-shine');
-        card.addEventListener('mouseenter', () => {
-          card.style.transition = 'transform 0.08s ease';
-        });
         card.addEventListener('mousemove', e => {
-          const r  = card.getBoundingClientRect();
-          const x  = (e.clientX - r.left) / r.width;
-          const y  = (e.clientY - r.top)  / r.height;
-          const rX = (0.5 - y) * 14;
-          const rY = (x - 0.5) * 14;
-          card.style.transform = `perspective(900px) rotateX(${rX}deg) rotateY(${rY}deg) translateZ(6px)`;
-          if (shine) shine.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, rgba(255,255,255,0.07) 0%, transparent 65%)`;
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          card.style.transform = `perspective(900px) rotateX(${(0.5-y)*13}deg) rotateY(${(x-.5)*13}deg) translateZ(6px)`;
+          if (shine) shine.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, rgba(255,255,255,0.065) 0%, transparent 65%)`;
         });
         card.addEventListener('mouseleave', () => {
           card.style.transition = 'transform 0.55s cubic-bezier(0.23,1,0.32,1)';
-          card.style.transform  = '';
+          card.style.transform = '';
           if (shine) shine.style.background = '';
-          setTimeout(() => { card.style.transition = ''; }, 560);
+          setTimeout(() => card.style.transition = '', 560);
         });
       });
     }
 
-    // ── Magnetic buttons
-    if (!isTouchDevice() && !prefersReducedMotion) {
+    // ── magnetic buttons ──
+    if (!isTouch() && !pRM) {
       document.querySelectorAll('[data-magnetic]').forEach(btn => {
-        btn.addEventListener('mouseenter', () => {
-          btn.style.transition = 'transform 0.1s ease';
-        });
         btn.addEventListener('mousemove', e => {
-          const r  = btn.getBoundingClientRect();
-          const dx = (e.clientX - (r.left + r.width  / 2)) * 0.28;
-          const dy = (e.clientY - (r.top  + r.height / 2)) * 0.28;
-          btn.style.transform = `translate(${dx}px, ${dy}px)`;
+          const r = btn.getBoundingClientRect();
+          btn.style.transform = `translate(${(e.clientX-(r.left+r.width/2))*.28}px,${(e.clientY-(r.top+r.height/2))*.28}px)`;
         });
-        btn.addEventListener('mouseleave', () => {
-          btn.style.transition = 'transform 0.45s cubic-bezier(0.23,1,0.32,1)';
-          btn.style.transform  = '';
-        });
+        btn.addEventListener('mouseleave', () => { btn.style.transition='transform 0.45s cubic-bezier(0.23,1,0.32,1)'; btn.style.transform=''; });
       });
     }
 
-    // ── Mobile menu
-    const menuBtn   = document.getElementById('menu-btn');
-    const mobileMenu  = document.getElementById('mobile-menu');
-    const iconOpen  = document.getElementById('icon-open');
+    // ── mobile menu ──
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
     const iconClose = document.getElementById('icon-close');
-    let menuExpanded = false;
-
+    let expanded = false;
     menuBtn.addEventListener('click', () => {
-      menuExpanded = !menuExpanded;
-      mobileMenu.classList.toggle('hidden', !menuExpanded);
-      iconOpen.classList.toggle('hidden', menuExpanded);
-      iconClose.classList.toggle('hidden', !menuExpanded);
-      menuBtn.setAttribute('aria-expanded', menuExpanded);
+      expanded = !expanded;
+      mobileMenu.classList.toggle('open', expanded);
+      iconOpen.classList.toggle('hidden', expanded);
+      iconClose.classList.toggle('hidden', !expanded);
+      menuBtn.setAttribute('aria-expanded', expanded);
     });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        menuExpanded = false;
-        mobileMenu.classList.add('hidden');
-        iconOpen.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', false);
-      });
-    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      expanded = false;
+      mobileMenu.classList.remove('open');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', false);
+    }));
 
-    // ── Active nav link highlight
+    // ── nav spy with active indicator ──
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.toggle('text-white',      link.getAttribute('href') === '#' + entry.target.id);
-            link.classList.toggle('text-slate-400',  link.getAttribute('href') !== '#' + entry.target.id);
+    const navLinks = document.querySelectorAll('nav a.nav-link');
+    const sectionObs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          navLinks.forEach(l => {
+            const active = l.getAttribute('href') === '#' + en.target.id;
+            l.classList.toggle('active', active);
+            l.classList.toggle('text-white', active);
+            l.classList.toggle('text-slate-400', !active);
           });
         }
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
-    sections.forEach(s => spy.observe(s));
+    sections.forEach(s => sectionObs.observe(s));
+
+    // ── contact form ──
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      if (!name || !email || !message) { showToast('Please fill in all fields'); return; }
+      const btn = document.getElementById('submit-btn');
+      const label = document.getElementById('submit-label');
+      btn.disabled = true;
+      label.textContent = 'Opening email client...';
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body = encodeURIComponent(`Hi Takrim,\n\n${message}\n\n— ${name}\n${email}`);
+      window.location.href = `mailto:nn389489@gmail.com?subject=${subject}&body=${body}`;
+      setTimeout(() => {
+        btn.disabled = false;
+        label.textContent = 'Send Message';
+        showToast('Email client opened — message ready to send');
+        this.reset();
+      }, 1800);
+    });
   </script>
 </body>
 </html>
